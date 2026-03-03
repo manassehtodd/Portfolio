@@ -53,7 +53,7 @@ function Work() {
 
     return(
         <div className="p-5">
-            <h1 className="text-7xl text-white font-semibold text-right">Work</h1>
+            <h1 className="text-7xl text-white font-semibold text-right">Work</h1><hr className="border border-[#3d3d3d]" />
             <table className="w-full">
                 <caption className="text-right caption-bottom pt-5 text-[#a6a6a6] text-xl mb-2">
                     Work experiences
