@@ -7,7 +7,7 @@ function Project() {
             </div>
             <div>
                 {/* Frist project block */}
-                <div className="grid grid-cols-6 grid-rows-3 gap-5">
+                <div className="grid grid-cols-6 grid-rows-3 gap-5 pt-5">
                     <div className="col-span-2 row-span-3 h-100 w-75">
                         <h1>Gostat</h1>
                         <ul className="flex flex-row gap-3 flex-wrap text-sm pt-10 pb-10">
@@ -35,7 +35,7 @@ function Project() {
                 </div>
 
                 {/* second project block */}
-                <div className="grid grid-cols-6 grid-rows-3 gap-5 pt-100">
+{/*                 <div className="grid grid-cols-6 grid-rows-3 gap-5 pt-100">
                     <div className="bg-green-600 row-span-3 rounded-xl w-full"></div>
                     <div className="bg-white col-span-3 row-span-2 rounded-xl w-full"></div>
                                         <div className="col-span-2 row-span-3 h-100 w-75">
@@ -60,7 +60,7 @@ function Project() {
                         <ArrowUpRight className="h-5 w-5 cursor-pointer" />
                     </div>
                 </div>
-                </div>
+                </div> */}
             </div>
         </section>
     );

@@ -2,29 +2,13 @@ import cursor from "./../assets/cursor.svg";
 
 const careerTime = [
     {
-        years: "2020-2021",
-        start: "2020-01",
-        end: "2021-12",
+        years: "2025-Present",
+        start: "2025-06",
+        end: "Present",
         workplace : "Company A",
         role: "Front-end Developer",
         tools: "React, Tailwindcss"
     },
-    {
-        years: "2022-2024",
-        start: "2022-01",
-        end: "2024-05",
-        workplace : "Company B",
-        role: "Front-end Developer",
-        tools: "React, Tailwindcss"
-    },
-    {
-        years: "2024-Present",
-        start: "2024-06",
-        end: "Present",
-        workplace : "Company C",
-        role: "Front-end Developer",
-        tools: "React, Tailwindcss"
-    }
 ]
 
 function calculateExperience(careerTime) {

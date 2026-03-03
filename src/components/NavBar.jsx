@@ -13,8 +13,8 @@ function NavBar() {
                     </nav>
                 </div>
                 <div>
-                    <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full border border-[#a6a6a6]">
-                        <span className="relative h-10 w-10 top-1/3 left-10 flex items-center justify-center">En <br /> Ge</span>
+                    <div>
+                        <span className="flex items-center justify-center">En <br /> Ge</span>
                     </div>
                 </div>
             </div>
