@@ -8,7 +8,9 @@ function NavBar() {
         <section id="navbar" className="p-5">
             <div className="flex flex-row justify-between items-center">
                 <div>
-                    <a href="#hero"> <span>Todd <br />Manasseh</span></a>
+                    <a href="#hero"> <span className="md:flex hidden">Todd <br />Manasseh</span>
+                    <span className="md:hidden flex">Todd.Manasseh</span>
+                    </a>
                 </div>
                 <div>
                     <nav className="md:flex hidden flex-row justify-around items-center gap-8">
