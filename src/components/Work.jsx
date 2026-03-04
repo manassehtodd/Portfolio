@@ -36,8 +36,8 @@ function Work() {
     const experience = calculateExperience(careerTime);
 
     return(
-        <div className="p-5">
-            <h1 className="text-7xl text-white font-semibold text-right">Work</h1><hr className="border border-[#3d3d3d]" />
+        <div className="pt-5 pb-5">
+            <h1 className="md:text-7xl text-5xl text-white font-semibold text-right">Work</h1><hr className="border border-[#3d3d3d]" />
             <table className="w-full">
                 <caption className="text-right caption-bottom pt-5 text-[#a6a6a6] text-xl mb-2">
                     Work experiences
@@ -49,9 +49,11 @@ function Work() {
                     {careerTime.map((item, index) => (
                         <tr key={index} className="border-b border-[#3d3d3d] hover:bg-[#f2f2f2] hover:text-black  transition-colors duration-300 cursor-[url(/src/assets/cursor.svg),pointer]">
                             <td className="px-4 py-2 pt-6 text-[#a6a6a6]">{item.years}</td>
-                            <td className="px-4 py-2">{item.workplace}</td>
-                            <td className="px-4 py-2">{item.role}</td>
-                            <td className="px-4 py-2">{item.tools}</td>
+                            <td className="px-4 py-2">
+                                <span className="md:mr-190 mr-5">{item.workplace}</span> 
+                                <span className="mr-5">{item.role} |</span> 
+                                <span>{item.tools}</span>
+                            </td>
                         </tr>))}
                 </tbody>
             </table>

@@ -17,22 +17,27 @@ function About() {
                     threshold={0.1}
                     delay={0.3}
                 >
-        <div className="flex flex-row justify-between items-center p-5">
+        <div className="flex md:flex-row flex-col gap-3 justify-between items-center p-5">
             <span className="w-full text-[#f5f5f5]">.../About me...</span>
-            <span className="text-[#a6a6a6]">Hello! I'm Manasseh, I'm an upcoming full-stack developer, for now just a front-end developer with the passion and zeal to build great user experiences, I may not have lots of experiences yet, but I am ready to build and learn.</span>
+            <span className="text-[#a6a6a6] text-wrap">Hello! I'm Manasseh, I'm an upcoming full-stack developer, for now just a front-end developer with the passion and zeal to build great user experiences, I may not have lots of experiences yet, but I am ready to build and learn.</span>
         </div>
 
 
-        <div className="flex flex-row justify-between">
+        <div className="flex md:flex-row flex-col justify-between">
+                        <div className="p-10 ml-5">
+                <div className="h-120 md:w-80 w-full bg-white rounded-xl items-center flex justify-center">
+                    <span className="text-black text-center">PICTURE</span>
+                </div>
+            </div>
             <div className="grid grid-cols-2 gap-4 w-120 text-[#a6a6a6]">
-                <div className="h-30 w-120 border border-[#3d3d3d] bg-white text-[#121212] rounded-4xl p-5 col-span-2">
+                <div className="h-30 md:w-120 w-full border border-[#3d3d3d] bg-white text-[#121212] rounded-4xl p-5 col-span-2">
                     <span className="text-xl">Front-end</span>
                     <ul className="flex flex-row gap-2">
                         <li>React /</li>
                         <li>Nextjs /</li>
                     </ul>
                 </div>
-                <div className="h-30 w-50 border border-[#3d3d3d] bg-transparent p-5 rounded-4xl text-[#a6a6a6]">
+                <div className="h-30 md:w-50 w-full border border-[#3d3d3d] bg-transparent p-5 rounded-4xl text-[#a6a6a6]">
                     <span className="text-xl">Style</span>
                     <ul className="flex flex-row gap-2">
                         <li>Tailwindcss</li>
@@ -45,7 +50,7 @@ function About() {
                     </div>
                 </div>
                 </a>
-                <div className="h-30 w-120 border border-[#3d3d3d] bg-transparent p-5 rounded-4xl col-span-2">
+                <div className="h-30 md:w-120 w-full border border-[#3d3d3d] bg-transparent p-5 rounded-4xl col-span-2">
                     <span className="text-xl">Back-end</span>
                     <ul className="flex flex-row gap-2">
                         <li>Nodejs</li>
@@ -62,11 +67,6 @@ function About() {
                         <li>Github</li>
                         <li>Gitlab</li>
                     </ul>
-                </div>
-            </div>
-            <div className="p-10 ml-5">
-                <div className="h-120 w-80 bg-white rounded-xl items-center flex justify-center">
-                    <span className="text-black text-center">PICTURE</span>
                 </div>
             </div>
         </div>
