@@ -29,15 +29,15 @@ function About() {
                     <span className="text-black text-center">PICTURE</span>
                 </div>
             </div>
-            <div className="grid grid-cols-2 gap-4 w-120 text-[#a6a6a6]">
-                <div className="h-30 md:w-120 w-full border border-[#3d3d3d] bg-white text-[#121212] rounded-4xl p-5 col-span-2">
+            <div className="grid grid-cols-2 gap-4 md:w-120 w-auto text-[#a6a6a6]">
+                <div className="h-30 border border-[#3d3d3d] bg-white text-[#121212] rounded-4xl p-5 col-span-2">
                     <span className="text-xl">Front-end</span>
                     <ul className="flex flex-row gap-2">
                         <li>React /</li>
                         <li>Nextjs /</li>
                     </ul>
                 </div>
-                <div className="h-30 md:w-50 w-full border border-[#3d3d3d] bg-transparent p-5 rounded-4xl text-[#a6a6a6]">
+                <div className="h-30 w-auto border border-[#3d3d3d] bg-transparent p-5 rounded-4xl text-[#a6a6a6]">
                     <span className="text-xl">Style</span>
                     <ul className="flex flex-row gap-2">
                         <li>Tailwindcss</li>
