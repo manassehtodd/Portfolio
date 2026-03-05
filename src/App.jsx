@@ -1,44 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Loader from "./components/Loader";
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Project from "./components/Project";
+const Project = React.lazy(() => import("./components/Project"));
 import Footer from "./components/Footer";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const minDuration = 2000; // 2 seconds minimum
-    const startTime = Date.now();
-
-    const handleLoad = () => {
-      const elapsed = Date.now() - startTime;
-      const remaining = minDuration - elapsed;
-
-      if (remaining > 0) {
-        setTimeout(() => setLoading(false), remaining);
-      } else {
-        setLoading(false);
-      }
-    };
-
-    window.addEventListener("load", handleLoad);
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+    const minDuration = 1000; // 1 second
+    const timeout = setTimeout(() => setLoading(false), minDuration);
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
     <>
       {loading && <Loader />}
-      <div style={{ display: loading ? "none" : "block" }}>
+      <div style={{ opacity: loading ? 0.5 : 1 }}>
         <Navbar />
         <Hero />
         <About />
-        <Project />
+        <Suspense fallback={<Loader />}>
+          <Project />
+        </Suspense>
         <Footer />
       </div>
     </>
