@@ -9,7 +9,7 @@ function NavBar() {
             <div className="flex flex-row justify-between items-center">
                 <div>
                     <a href="#hero"> <span className="md:flex hidden">Todd <br />Manasseh</span>
-                    <span className="md:hidden flex">Todd.Manasseh</span>
+                    <span className="md:hidden text-[#a6a6a6] flex">Todd.Manasseh</span>
                     </a>
                 </div>
                 <div>
