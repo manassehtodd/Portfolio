@@ -1,18 +1,92 @@
-# React + Vite
+# Portfolio Website
+A modern developer portfolio website built with React and TailwindCSS to showcase my projects, skills, and work as a frontend developer.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌐 Live Demo:
+https://manasseh-dev.vercel.app/
 
-Currently, two official plugins are available:
+## About the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is my personal portfolio website designed to present my work, projects, and technical skills in a clean and responsive interface.
 
-## React Compiler
+The goal of this portfolio is to:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Showcase my development projects
+- Demonstrate my frontend development skills
+- Provide an easy way for recruiters or collaborators to contact me
+- Build a strong online presence as a developer
+- The website features modern UI design, smooth animations, and responsive layouts for both desktop and mobile devices.
 
-Note: This will impact Vite dev & build performances.
+## Tech Stack
 
-## Expanding the ESLint configuration
+This project was built using modern frontend technologies:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js – Component-based UI development
+- Vite – Fast development and build tool
+- TailwindCSS – Utility-first CSS framework
+- GSAP – Animation library
+- Vercel – Deployment and hosting
+
+## Features
+- Fully responsive design
+- Modern and clean UI
+- Smooth animations
+- Mobile navigation menu
+- Project showcase section
+- About section
+- Contact section
+- Fast loading and optimized build
+
+## Project Structure
+```
+src
+ ├── assets
+ ├── components
+ │   ├── Navbar
+ │   ├── Hero
+ │   ├── About
+ │   ├── Project
+ │   └── Footer
+ ├── App.jsx
+ └── main.jsx
+```
+## Installation
+Clone the repository:
+```
+  git clone https://github.com/manassehtodd/protfolio.git
+  cd protfolio
+  npm install
+  npm run dev
+  http://localhost:5173
+```
+## Build for Production
+```
+  npm run build
+  npm run preview
+```
+
+## Deployment
+This project is deployed using Vercel.
+
+To deploy your own version:
+1. Fork the repository
+2. Connect it to Vercel
+3. Deploy instantly
+
+## Author
+Manasseh TODD
+
+Github:
+  https://github.com/manassehtodd<br>
+Portfolio:
+  https://manasseh-dev.vercel.app/
+
+## Future Improvements
+- Add more projects
+- Imporve animations and interactions
+- Add blog section
+- Imporve performance optimization
+
+---
+
+If you found this project useful, consider starring the repository ⭐
+ 
