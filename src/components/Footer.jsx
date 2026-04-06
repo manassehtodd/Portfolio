@@ -29,10 +29,10 @@ function Footer() {
                     </div>
                 </div>
                 <div className='mt-5'>
-                    <h1 className="lg:text-9xl text-5xl font-semibold cursor-target">TODD</h1>
+                    <h1 className="lg:text-9xl text-4xl font-semibold cursor-target">TODD</h1>
                     <div className="flex flex-row">
                         <div className="flex items-baseline-last md:pr-10 p-5"><span className="text-[#a6a6a6] sm:text-sm italic">Front-end<br/> Developer</span></div>
-                        <span className="lg:text-9xl text-5xl font-semibold cursor-target">Manasseh</span>
+                        <span className="lg:text-9xl text-4xl font-semibold cursor-target">Manasseh</span>
                     </div>
                 </div>
                 <div className="w-100 hidden md:block">

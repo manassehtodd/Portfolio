@@ -1,4 +1,4 @@
-import ArrowUp from "./../../public/arrow-up.svg";
+import ArrowUp from "/arrow-up.svg?url";
 
 function ProjectBlock({ project, reverse = false }) {
   return (

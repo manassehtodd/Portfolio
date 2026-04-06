@@ -63,9 +63,6 @@ function About() {
                 </div>
                 <a href="https://github.com/manassehtodd" target="_blank"><div className=" flex flex-row items-center static">
                     <div className="border border-[#3d3d3d] w-10 rounded-full p-2.5"><BrandGithub className="h-5 w-5" /></div>
-                    <div className="absolute left-70 h-10 w-10 bg-white rounded-full items-center flex justify-center">
-                        <ArrowUpRight className="h-5 w-5 cursor-pointer" />
-                    </div>
                 </div>
                 </a>
                 <div className="h-30 md:w-120 w-full border border-[#3d3d3d] bg-transparent p-5 rounded-4xl col-span-2">
