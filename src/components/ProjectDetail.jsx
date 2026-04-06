@@ -39,7 +39,7 @@ This is a demo project designed to showcase frontend engineering skills, data vi
 Torgist lets you drop your stories without your name attached. You write, the app slices your text into cards, reads the emotional energy behind each one, and gives it a visual vibe — color, gradient, aura. Then you share it or let it vanish.
 No usernames. No followers. Just the story..`,
     tools: ["React + Vite", "Tailwind CSS", "Custom Hooks - useAutoSlicer, useAuraEngine", "ReactJS", "vercel"],
-    link: "https://github.com/...",
+    link: "https://ghost-thread.vercel.app/",
     images: {
         main: TorgistSnap,
         side: TorgistSnap3,
