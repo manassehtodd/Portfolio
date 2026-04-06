@@ -11,9 +11,9 @@ import TorgistSnap3 from "./../assets/images/Torgist-snap3.png";
 const projectDetails = [
   {
     name: "Finovo",
-    description: "Finance tracking app...",
-    tools: ["React", "Tailwind", "Firebase"],
-    link: "https://github.com/...",
+    description: "Finance is a Finance Landing page built with React and Tailwind CSS. It features a clean and modern design, responsive layout, and smooth animations. The project demonstrates frontend development skills, UI/UX design principles, and the ability to create visually appealing web interfaces.",
+    tools: ["React", "Tailwind", "Git Pages", "Vite"],
+    link: "https://manassehtodd.github.io/Finovo/",
     images: {
       main: FinovoSnap,
       side: FinovoSnap3,
@@ -22,9 +22,11 @@ const projectDetails = [
   },
   {
     name: "Ledgerly",
-    description: "Expense dashboard...",
-    tools: ["React", "Context API"],
-    link: "https://github.com/...",
+    description: `Ledgerly is a polished demo finance dashboard web app built with React and Vite.
+It helps users visualize and track their personal finances with a clean UI and responsive layout.
+This is a demo project designed to showcase frontend engineering skills, data visualization, and user-centric design.`,
+    tools: ["React","Tailwind CSS", "Recharts","React Router","JavaScript", "Context API + useState", "vercel", "Claude"],
+    link: "https://zorvyn-ledgerly.vercel.app/",
     images: {
       main: LedgerlySnap,
       side: LedgerlySnap3,
@@ -33,8 +35,10 @@ const projectDetails = [
   },
   {
     name: "Torgist - Ghost Thread",
-    description: "A Ghost Thread app...",
-    tools: ["React", "Tailwind", "Firebase"],
+    description: `Anonymous emotional storytelling for Gen Z.
+Torgist lets you drop your stories without your name attached. You write, the app slices your text into cards, reads the emotional energy behind each one, and gives it a visual vibe — color, gradient, aura. Then you share it or let it vanish.
+No usernames. No followers. Just the story..`,
+    tools: ["React + Vite", "Tailwind CSS", "Custom Hooks - useAutoSlicer, useAuraEngine", "ReactJS", "vercel"],
     link: "https://github.com/...",
     images: {
         main: TorgistSnap,
