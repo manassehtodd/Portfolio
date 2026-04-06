@@ -1,12 +1,12 @@
-import FinovoSnap from "./../assets/images/Finovo-snap.png";
-import FinovoSnap2 from "./../assets/images/Finovo-snap2.jpg";
-import FinovoSnap3 from "./../assets/images/Finovo-snap3.jpg";
-import LedgerlySnap from "./../assets/images/Ledgerly-snap1.png";
-import LedgerlySnap2 from "./../assets/images/Ledgerly-snap2.png";
-import LedgerlySnap3 from "./../assets/images/Ledgerly-snap.png";
-import TorgistSnap from "./../assets/images/Torgist-snap.png";
-import TorgistSnap2 from "./../assets/images/Torgist-snap2.png";
-import TorgistSnap3 from "./../assets/images/Torgist-snap3.png";
+import FinovoSnap from "./../assets/images/Finovo-snap.webp";
+import FinovoSnap2 from "./../assets/images/Finovo-snap2.webp";
+import FinovoSnap3 from "./../assets/images/Finovo-snap3.webp";
+import LedgerlySnap from "./../assets/images/Ledgerly-snap.webp";
+import LedgerlySnap2 from "./../assets/images/Ledgerly-snap2.webp";
+import LedgerlySnap3 from "./../assets/images/Ledgerly-snap.webp";
+import TorgistSnap from "./../assets/images/Torgist-snap.webp";
+import TorgistSnap2 from "./../assets/images/Torgist-snap2.webp";
+import TorgistSnap3 from "./../assets/images/Torgist-snap3.webp";
 
 const projectDetails = [
   {
