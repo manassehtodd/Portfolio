@@ -15,6 +15,16 @@ const projectDetails = [
         toolUsed: ["ReactJS", "Tailwind CSS", "Recharts", "Context API + useState", "React Router", "JavaScript", "Vite", "Vercel", "Claude"],
         Link: "https://zorvyn-ledgerly.vercel.app/"
     },
+    {
+        name: "Torgist - Ghost Thread",
+        description: `
+        Anonymous emotional storytelling for Gen Z.
+        Torgist lets you drop your stories without your name attached. You write, the app slices your text into cards, reads the emotional energy behind each one, and gives it a visual vibe — color, gradient, aura. Then you share it or let it vanish.
+No usernames. No followers. Just the story.
+        `,
+        toolUsed: ["ReactJS", "Tailwind CSS", "Custom Hooks -useAutoSlicer, useAuraEngine", "Vite", "Vercel"],
+        Link: "https://ghost-thread.vercel.app/"
+    }
 ]
 
 export default projectDetails;
