@@ -1,4 +1,4 @@
-import { BrandLinkedin, BrandTelegram, BrandWhatsapp, BrandInstagram, BrandGithub, ArrowNarrowRight, ArrowUpRight, EmailIcon } from "./Logo";
+/* import { BrandLinkedin, BrandTelegram, BrandWhatsapp, BrandInstagram, BrandGithub, ArrowNarrowRight, ArrowUpRight, EmailIcon } from "./Logo";
 import FinovoSnap from "./../assets/images/Finovo-snap.png";
 import FinovoSnap2 from "./../assets/images/Finovo-snap2.jpg";
 import FinovoSnap3 from "./../assets/images/Finovo-snap3.jpg";
@@ -48,4 +48,4 @@ function ProjectMobile() {
     );
 }
 
-export default ProjectMobile;
+export default ProjectMobile; */
