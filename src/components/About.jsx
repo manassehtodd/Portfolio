@@ -1,12 +1,13 @@
 import Work from "./Work";
 import AnimatedContent from "./AnimatedContent";
 import { BrandLinkedin, BrandTelegram, BrandWhatsapp, BrandInstagram, BrandGithub, ArrowNarrowRight, ArrowUpRight } from "./Logo";
+import Profile from "./../assets/images/profile.webp";
 
 const aboutDetails = {
-    frontend: [ "React", "reactjs", "HTML", "NextJs"],
-    style: [ "tailwindcss",],
-    backend: ["NodejS, ExpressJS"],
-    devops: ["Git", "Github", "Gitlab", "Bash"],
+    frontend: [ "React/", "reactjs/", "HTML/", "TypeScript/"],
+    style: [ "tailwindcss/", "XuiStyle/", "CSS/"],
+    backend: ["NodejS/ ExpressJS/ PostgreSQL/ MySQL"],
+    devops: ["Git/", "Github/", "Bash/", "Vercel/"],
 }
 
 function About() {
@@ -32,8 +33,8 @@ function About() {
 
         <div className="flex md:flex-row flex-col justify-between">
                         <div className="p-10 ml-5 md:hidden block">
-                <div className="h-120 md:w-80 w-full bg-white rounded-xl items-center flex justify-center">
-                    <span className="text-black text-center">PICTURE</span>
+                <div className="h-full md:w-80 w-full rounded-xl items-center flex justify-center">
+                    <img src={Profile} className="rounded-xl" alt="Profile" />
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:w-120 w-auto text-[#a6a6a6]">
@@ -51,7 +52,7 @@ function About() {
                 </div>
                 <div className="h-30 w-auto border border-[#3d3d3d] bg-transparent p-5 rounded-4xl text-[#a6a6a6]">
                     <span className="text-xl">Style</span>
-                    <ul className="flex flex-row gap-2">
+                    <ul className="flex flex-wrap flex-row gap-2">
                             {aboutDetails.style.map((tool, index) => (
                                 <li
                                     key={index}
@@ -95,7 +96,7 @@ function About() {
             </div>
                 <div className="p-10 ml-5 md:block hidden">
                 <div className="h-120 md:w-80 w-full bg-white rounded-xl items-center flex justify-center">
-                    <span className="text-black text-center">PICTURE</span>
+                    <img src={Profile} className="rounded-xl" alt="Profile" />
                 </div>
             </div>
         </div>
