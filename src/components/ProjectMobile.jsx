@@ -12,6 +12,8 @@ function ProjectMobile({ project }) {
           <img
             src={project.images.main}
             className="w-full h-48 object-fit rounded-xl"
+            alt="project-img"
+            loading="lazy"
           />
         </div>
 
@@ -20,6 +22,8 @@ function ProjectMobile({ project }) {
             <img
                 src={project.images.extra}
                 className= "w-full h-32 object-fit rounded-xl"
+                alt="project-img"
+                loading="lazy"
             />
         </div>
         )}

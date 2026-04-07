@@ -34,7 +34,7 @@ function About() {
         <div className="flex md:flex-row flex-col justify-between">
                         <div className="p-10 ml-5 md:hidden block">
                 <div className="h-full md:w-80 w-full rounded-xl items-center flex justify-center">
-                    <img src={Profile} className="rounded-xl" alt="Profile" />
+                    <img src={Profile} loading="lazy"  className="rounded-xl" alt="Profile" />
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:w-120 w-auto text-[#a6a6a6]">
@@ -96,7 +96,7 @@ function About() {
             </div>
                 <div className="p-10 ml-5 md:block hidden">
                 <div className="h-120 md:w-80 w-full bg-white rounded-xl items-center flex justify-center">
-                    <img src={Profile} className="rounded-xl" alt="Profile" />
+                    <img src={Profile} loading="lazy" className="rounded-xl" alt="Profile" />
                 </div>
             </div>
         </div>

@@ -27,6 +27,8 @@ function ProjectBlock({ project, reverse = false }) {
         <img
           src={project.images.main}
           className="object-fill h-full rounded-xl"
+          alt="project-img"
+          loading="lazy"
         />
       </div>
 
@@ -35,6 +37,8 @@ function ProjectBlock({ project, reverse = false }) {
         <img
           src={project.images.side}
           className="object-fill h-full rounded-xl"
+          alt="project-img"
+          loading="lazy"
         />
       </div>
 
@@ -43,6 +47,8 @@ function ProjectBlock({ project, reverse = false }) {
         <img
           src={project.images.extra}
           className="object-fill h-full rounded-xl"
+          alt="project-img"
+          loading="lazy"
         />
       </div>
 
