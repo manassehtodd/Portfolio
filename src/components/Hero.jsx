@@ -18,12 +18,12 @@ function Hero() {
                             useOriginalCharsOnly={false}
                         />
                     </h1>
-                    <div className="items-end flex flex-row justify-end gap-4 ">
-                    <button className="bg-[#f5f5f5] p-2 text-[#121212] h-12 w-60 rounded-full hover:cursor-pointer italic ">Projects</button>
+                    <a aria-label="My Resume" href="https://docs.google.com/document/d/1IwmQ6Fb6PLMP4TrPqvlt5XFdppmeG-j3vIZLdoqc1OI/edit?usp=sharing" target="_blank" rel="nonreferrer"><div className="items-end flex flex-row justify-end gap-4 ">
+                    <button className="bg-[#f5f5f5] p-2 text-[#121212] h-12 w-60 rounded-full hover:cursor-pointer italic ">My Resume</button>
                     <button className="h-12 w-12 bg-[#f5f5f5] p-5 hover:cursor-pointer rounded-full">
                         <ArrowNarrowRight className="relative -top-2.5 -left-2.5 h-8 w-8" />
                     </button>
-                    </div>
+                    </div></a>
                 </div>
                 <div className="flex flex-row  justify-center items-center gap-6 w-full">
                     <span className="text-wrap w-75 text-[#a6a6a6] cursor-target">
