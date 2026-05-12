@@ -9,6 +9,14 @@ const careerTime = [
         role: "Front-end Developer",
         tools: "React, Tailwindcss"
     },
+    {
+        years: "2026-Present",
+        start: "2026-05",
+        end: "Present",
+        workplace: "Xnyder HQ",
+        role: "Front-end Developer/Outreach developer",
+        tools: "JavaScript, React, Tailwindcss, StyleXui, Figma"
+    }
 ]
 
 function calculateExperience(careerTime) {
