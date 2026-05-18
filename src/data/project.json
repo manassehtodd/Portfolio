@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Finovo",
+    "description": "Finance is a Finance Landing page built with React and Tailwind CSS. It features a clean and modern design, responsive layout, and smooth animations.",
+    "tools": ["React", "Tailwind", "Git Pages", "Vite"],
+    "link": "https://manassehtodd.github.io/Finovo/",
+    "images": {
+      "main": "https://res.cloudinary.com/dnzny7psh/image/upload/q_auto/f_auto/v1779089351/Finovo-snap_i42ika.webp",
+      "side": "https://res.cloudinary.com/dnzny7psh/image/upload/q_auto/f_auto/v1779089587/Finovo-snap3_cuuurj.webp",
+      "extra": "https://res.cloudinary.com/dnzny7psh/image/upload/q_auto/f_auto/v1779089587/Finovo-snap2_sux39f.webp"
+    }
+  },
+  {
+    "name": "Ledgerly",
+    "description": "Ledgerly is a polished demo finance dashboard web app built with React and Vite. It helps users visualize and track their personal finances with a clean UI and responsive layout.",
+    "tools": ["React", "Tailwind CSS", "Recharts", "React Router", "JavaScript", "Context API + useState", "Vercel"],
+    "link": "https://zorvyn-ledgerly.vercel.app/",
+    "images": {
+      "main": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/Ledgerly-snap1_lm23ft.webp",
+      "side": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089587/Ledgerly-snap_jrnlvu.webp",
+      "extra": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/Ledgerly-snap2_qs1cfh.webp"
+    }
+  },
+  {
+    "name": "Torgist - Ghost Thread",
+    "description": "Anonymous emotional storytelling for Gen Z. Torgist lets you drop your stories without your name attached. You write, the app slices your text into cards, reads the emotional energy behind each one, and gives it a visual vibe — color, gradient, aura. Then you share it or let it vanish. No usernames. No followers. Just the story.",
+    "tools": ["React + Vite", "Tailwind CSS", "Custom Hooks - useAutoSlicer, useAuraEngine", "Vercel"],
+    "link": "https://ghost-thread.vercel.app/",
+    "images": {
+      "main": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/Torgist-snap_pv3ycm.webp",
+      "side": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089587/Torgist-snap3_ruynyr.webp",
+      "extra": null
+    }
+  },
+  {
+    "name": "M&J Stitches — Bespoke Menswear Website",
+    "description": "A multi-page frontend website built for M&J Stitches, a bespoke menswear brand based in Port Harcourt, Rivers State. The brand specializes in made-to-order clothing across styles including suits, senators, kaftans, and native wear.",
+    "tools": ["React", "Tailwind CSS", "Vite", "React Router DOM", "Swiper.js"],
+    "link": "https://mj-s-omega.vercel.app/",
+    "images": {
+      "main": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/mj-home_frswfj.webp",
+      "side": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/mj-detail_cymnqk.webp",
+      "extra": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/mj-collection_gmhuuo.webp"
+    }
+  }
+]
