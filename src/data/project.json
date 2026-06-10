@@ -42,5 +42,16 @@
       "side": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/mj-detail_cymnqk.webp",
       "extra": "https://res.cloudinary.com/dnzny7psh/image/upload/v1779089588/mj-collection_gmhuuo.webp"
     }
+  },
+  {
+  "name": "Lumière",
+  "description": "A full-stack e-commerce storefront for a clean beauty and skincare brand. Built with real database integration, Google OAuth, persistent cart state, and dual payment support — Paystack for online payments and cash on delivery for local customers in Warri.",
+  "tools": ["React", "Vite", "Tailwind CSS v4", "Supabase", "Zustand", "Paystack", "React Router DOM"],
+  "link": "https://lumi-re-three.vercel.app/",
+  "images": {
+    "main": "https://res.cloudinary.com/dnzny7psh/image/upload/q_auto/f_auto/v1781077414/Screenshot_2026-06-10_071323_ynk6ui.png",
+    "side": "https://res.cloudinary.com/dnzny7psh/image/upload/v1781077864/screencapture-lumi-re-three-vercel-app-2026-06-10-08_50_37_f4ilcn.png",
+    "extra": "https://res.cloudinary.com/dnzny7psh/image/upload/v1781077740/Screenshot_2026-06-10_084836_c2y5ut.png"
   }
+}
 ]
