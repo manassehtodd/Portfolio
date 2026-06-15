@@ -1,5 +1,3 @@
-import cursor from "./../assets/cursor.svg";
-
 const careerTime = [
     {
         years: "2025-Present",
