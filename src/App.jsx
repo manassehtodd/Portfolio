@@ -1,34 +1,24 @@
-import React, { useState, useEffect, Suspense } from "react";
-import Loader from "./components/Loader";
-import Navbar from "./components/NavBar";
+import Header from "./components/Header";
 import Hero from "./components/Hero";
+import WorkIndex from "./components/WorkIndex";
 import About from "./components/About";
-const Project = React.lazy(() => import("./components/Project"));
-import Footer from "./components/Footer";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
 
-function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const minDuration = 1000; // 1 second
-    const timeout = setTimeout(() => setLoading(false), minDuration);
-    return () => clearTimeout(timeout);
-  }, []);
-
+export default function App() {
   return (
     <>
-      {loading && <Loader />}
-      <div style={{ opacity: loading ? 0.5 : 1 }}>
-        <Navbar />
+      <a className="skip-link" href="#work">
+        Skip to work
+      </a>
+      <Header />
+      <main id="top">
         <Hero />
+        <WorkIndex />
         <About />
-        <Suspense fallback={<Loader />}>
-          <Project />
-        </Suspense>
-        <Footer />
-      </div>
+        <Experience />
+      </main>
+      <Contact />
     </>
   );
 }
-
-export default App;
