@@ -25,16 +25,18 @@ export default function About() {
 
         <div className="about__copy">
           <p className="about__lead">
-            I'm Manasseh, a frontend developer who cares about the parts people actually touch:
-            how fast a page appears, how a button feels and whether checkout works on a cheap
-            Android phone.
+            I'm Manasseh, a full-stack developer who builds the whole thing, but still obsesses
+            over the parts people touch: how fast a page appears, how a button feels and whether
+            checkout works on a cheap Android phone.
           </p>
           <div className="about__body">
             <p>
-              I started with landing pages in 2025. Today I ship live stores, school platforms
-              and sites that clients edit themselves, for businesses across Warri and Port
-              Harcourt. I'm studying software engineering at NIIT, and my work keeps reaching
-              further back: Supabase and Postgres, payments with Paystack, server-side Java.
+              I started with landing pages in 2025. Today I build complete products, covering
+              interface, database, sign-in, payments and admin tools, for businesses across Warri
+              and Port Harcourt: live stores, school platforms and sites that clients run
+              themselves. I work with React and TypeScript on the front, Supabase and Postgres
+              behind it, Paystack and KoraPay for payments, and server-side Java. I'm also
+              studying software engineering at NIIT.
             </p>
             <p>
               I like small teams, clear briefs and leaving code that the next person can read.

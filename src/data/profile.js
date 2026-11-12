@@ -1,6 +1,6 @@
 export const profile = {
   name: "Manasseh Todd",
-  role: "Frontend developer",
+  role: "Full-stack developer",
   location: "Warri, Nigeria",
   timeZone: "Africa/Lagos",
   email: "manassehtodd1@gmail.com",

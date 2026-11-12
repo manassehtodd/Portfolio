@@ -8,8 +8,8 @@ export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero__meta mono">
-        <span>Portfolio / 2026 edition</span>
-        <span className="hide-sm">Frontend developer</span>
+        <span className="hide-sm">Portfolio / 2026 edition</span>
+        <span>{profile.role}</span>
         <span>{profile.location}</span>
       </div>
 
@@ -26,8 +26,8 @@ export default function Hero() {
 
       <div className="hero__grid">
         <p className="hero__lede">
-          I build fast, considered websites for brands, schools and small businesses, from the
-          first layout to the checkout button.
+          I build fast, considered web apps for brands, schools and small businesses, from the
+          database to the checkout button.
         </p>
 
         <div className="hero__side">
@@ -42,7 +42,7 @@ export default function Hero() {
             </div>
             <div>
               <dt className="mono">Stack</dt>
-              <dd>React · TypeScript · Supabase</dd>
+              <dd>React · Supabase · Postgres</dd>
             </div>
           </dl>
           <div className="hero__actions">
