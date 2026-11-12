@@ -1,108 +1,62 @@
-import Work from "./Work";
-import AnimatedContent from "./AnimatedContent";
-import { BrandLinkedin, BrandTelegram, BrandWhatsapp, BrandInstagram, BrandGithub, ArrowNarrowRight, ArrowUpRight } from "./Logo";
-import Profile from "./../assets/images/profile.webp";
+import { skills } from "../data/profile";
 
-const aboutDetails = {
-    frontend: [ "React/", "reactjs/", "HTML/", "TypeScript/"],
-    style: [ "tailwindcss/", "XuiStyle/", "CSS/"],
-    backend: ["NodejS/ ExpressJS/ PostgreSQL/ MySQL"],
-    devops: ["Git/", "Github/", "Bash/", "Vercel/"],
-}
+export default function About() {
+  return (
+    <section id="about" className="section about" aria-labelledby="about-title">
+      <div className="section__head">
+        <p className="section__label mono">(02)</p>
+        <h2 id="about-title" className="section__title">
+          About
+        </h2>
+      </div>
 
-function About() {
-    return(
-    <section id="about" className="pt-30 p-5">
-                <AnimatedContent
-                    distance={200}
-                    direction="vertical"
-                    reverse={false}
-                    duration={1}
-                    ease="power3.out"
-                    initialOpacity={0}
-                    animateOpacity
-                    scale={1}
-                    threshold={0.1}
-                    delay={0.3}
-                >
-        <div className="flex md:flex-row flex-col gap-3 justify-between items-center p-5">
-            <span className="w-full text-[#f5f5f5]">.../About me...</span>
-            <span className="text-[#a6a6a6] text-wrap">Hello! I'm Manasseh, I'm an upcoming full-stack developer, for now just a front-end developer with the passion and zeal to build great user experiences, I may not have lots of experiences yet, but I am ready to build and learn.</span>
+      <div className="about__grid">
+        <figure className="about__portrait">
+          <img
+            src="/manasseh.webp"
+            alt="Manasseh Todd, in glasses and a navy polo, in front of a slatted wood wall"
+            width="800"
+            height="1000"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption className="mono">Warri, Delta State · WAT (UTC+1)</figcaption>
+        </figure>
+
+        <div className="about__copy">
+          <p className="about__lead">
+            I'm Manasseh, a full-stack developer who builds the whole thing, but still obsesses
+            over the parts people touch: how fast a page appears, how a button feels and whether
+            checkout works on a cheap Android phone.
+          </p>
+          <div className="about__body">
+            <p>
+              I started with landing pages in 2025. Today I build complete products, covering
+              interface, database, sign-in, payments and admin tools, for businesses across Warri
+              and Port Harcourt: live stores, school platforms and sites that clients run
+              themselves. I work with React and TypeScript on the front, Supabase and Postgres
+              behind it, Paystack and KoraPay for payments, and server-side Java. I'm also
+              studying software engineering at NIIT.
+            </p>
+            <p>
+              I like small teams, clear briefs and leaving code that the next person can read.
+            </p>
+          </div>
+
+          <div className="skills">
+            {skills.map((s) => (
+              <div key={s.group} className="skills__col">
+                <h3 className="mono">{s.group}</h3>
+                <ul>
+                  {s.items.map((i) => (
+                    <li key={i}>{i}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-
-
-        <div className="flex md:flex-row flex-col justify-between">
-                        <div className="p-10 ml-5 md:hidden block">
-                <div className="h-full md:w-80 w-full rounded-xl items-center flex justify-center">
-                    <img src={Profile} loading="lazy"  className="rounded-xl" alt="Profile" />
-                </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 md:w-120 w-auto text-[#a6a6a6]">
-                <div className="h-30 border border-[#3d3d3d] bg-white text-[#121212] rounded-4xl p-5 col-span-2">
-                    <span className="text-xl">Front-end</span>
-                    <ul className="flex flex-row gap-2">
-                            {aboutDetails.frontend.map((tool, index) => (
-                                <li
-                                    key={index}
-                                >
-                                    {tool}
-                                </li>
-                                ))}
-                    </ul>
-                </div>
-                <div className="h-30 w-auto border border-[#3d3d3d] bg-transparent p-5 rounded-4xl text-[#a6a6a6]">
-                    <span className="text-xl">Style</span>
-                    <ul className="flex flex-wrap flex-row gap-2">
-                            {aboutDetails.style.map((tool, index) => (
-                                <li
-                                    key={index}
-                                >
-                                    {tool}
-                                </li>
-                                ))}
-                    </ul>
-                </div>
-                <a href="https://github.com/manassehtodd" target="_blank"><div className=" flex flex-row items-center static">
-                    <div className="border border-[#3d3d3d] w-10 rounded-full p-2.5"><BrandGithub className="h-5 w-5" /></div>
-                </div>
-                </a>
-                <div className="h-30 md:w-120 w-full border border-[#3d3d3d] bg-transparent p-5 rounded-4xl col-span-2">
-                    <span className="text-xl">Back-end</span>
-                    <ul className="flex flex-row gap-2">
-                            {aboutDetails.backend.map((tool, index) => (
-                                <li
-                                    key={index}
-                                >
-                                    {tool}
-                                </li>
-                                ))}
-                    </ul>
-                </div>
-                <div>
-                    <span className="text-[#a6a6a6] text-sm">Some of my <em className="text-[#f5f5f5]">favorite technologies or tools</em>, that I worked with</span>
-                </div>
-                <div className="h-30 md:w-50 w-full border border-[#3d3d3d] bg-transparent p-5 rounded-4xl">
-                    <span className="text-xl">DevOps</span>
-                    <ul className="flex flex-wrap flex-row gap-2">
-                            {aboutDetails.devops.map((tool, index) => (
-                                <li
-                                    key={index}
-                                >
-                                    {tool}
-                                </li>
-                                ))}
-                    </ul>
-                </div>
-            </div>
-                <div className="p-10 ml-5 md:block hidden">
-                <div className="h-120 md:w-80 w-full bg-white rounded-xl items-center flex justify-center">
-                    <img src={Profile} loading="lazy" className="rounded-xl" alt="Profile" />
-                </div>
-            </div>
-        </div>
-</AnimatedContent>
-        <Work />
-    </section>);
+      </div>
+    </section>
+  );
 }
-
-export default About;
