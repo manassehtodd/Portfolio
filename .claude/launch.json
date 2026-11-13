@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "cryptocuts", "runtimeExecutable": "npx", "runtimeArgs": ["--yes", "serve@14.2.4", "clients/cryptocuts", "-l", "4791"], "port": 4791 }
+  ]
+}

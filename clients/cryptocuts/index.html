@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cryptocut · Website Options</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#f3ece0; --paper-2:#ebe2d3; --ink:#111110; --mute:#6f675b; --line:#d6ccbb; --btc:#f7931a; --btc-ink:#b4630a; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--paper); color:var(--ink); font:16px/1.6 Inter,system-ui,sans-serif; }
+  main { max-width:1200px; margin:0 auto; padding:clamp(48px,8vw,96px) clamp(16px,4vw,48px); }
+  .kicker { font:600 12px/1 Inter,sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--mute); }
+  h1 { font:400 clamp(56px,9vw,120px)/.9 "Instrument Serif",Georgia,serif; letter-spacing:-.03em; margin:18px 0 22px; }
+  h1 em { color:var(--btc-ink); }
+  .intro { max-width:60ch; color:#3b362f; font-size:18px; margin-bottom:56px; }
+  .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch; }
+  .tier { background:var(--paper-2); border-radius:20px; padding:30px; display:flex; flex-direction:column; }
+  .tier.hot { background:var(--ink); color:var(--paper); }
+  .tier.hot .meta, .tier.hot .kicker { color:#a39b8e; }
+  .tier.hot li { border-color:#2e2c29; }
+  .tier h2 { font:italic 400 48px/1 "Instrument Serif",Georgia,serif; margin:12px 0 6px; }
+  .price { font:400 52px/1 "Instrument Serif",Georgia,serif; margin:18px 0 4px; }
+  .price small { font:500 13px Inter,sans-serif; color:var(--mute); }
+  .tier ul { list-style:none; padding:0; margin:20px 0 28px; flex:1; }
+  .tier li { padding:10px 0; border-top:1px solid var(--line); font-size:15px; }
+  .tier li::before { content:"✦ "; color:var(--btc); }
+  .tier a { display:block; text-align:center; text-decoration:none; font-weight:600; padding:15px; background:var(--ink); color:var(--paper); border-radius:99px; }
+  .tier.hot a { background:var(--btc); color:var(--ink); }
+  .tier a:focus-visible { outline:2px solid var(--btc); outline-offset:3px; }
+  .badge { align-self:flex-start; font:600 11px Inter,sans-serif; letter-spacing:.1em; background:var(--btc); color:var(--ink); padding:5px 10px; border-radius:99px; }
+  .meta { color:var(--mute); font-size:14px; }
+  .refs { margin-top:56px; border-top:1px solid var(--line); padding-top:28px; display:grid; grid-template-columns:200px 1fr; gap:24px; }
+  .refs ul { list-style:none; padding:0; }
+  .refs li { padding:8px 0; border-bottom:1px solid var(--line); font-size:15px; }
+  .refs a { color:inherit; }
+  @media (max-width:900px) { .tiers, .refs { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Proposal · Cryptocut Barbershop &amp; Gaming, Port Harcourt</p>
+  <h1>Three ways to put <em>Cryptocut</em> online</h1>
+  <p class="intro">Right now Cryptocut can only be found on Facebook and in directory listings. Each option below is a working demo with real WhatsApp booking, built around what makes the shop different: a barbershop with a gaming lounge.</p>
+
+  <div class="tiers">
+    <article class="tier">
+      <span class="kicker">Tier 01</span>
+      <h2>Starter</h2>
+      <p class="meta">The essentials, live in 2 days.</p>
+      <p class="price">₦90,000 <small>one-off</small></p>
+      <ul>
+        <li>Single page: cut and lounge prices, address, hours</li>
+        <li>WhatsApp booking and click-to-call buttons</li>
+        <li>Mobile-first, loads in under a second</li>
+        <li>Domain and hosting setup</li>
+        <li>1 round of edits</li>
+      </ul>
+      <a href="cheap/">View demo →</a>
+    </article>
+
+    <article class="tier hot">
+      <span class="badge">RECOMMENDED</span>
+      <span class="kicker" style="margin-top:12px">Tier 02</span>
+      <h2>Standard</h2>
+      <p class="meta">A full shop website, live in 1 week.</p>
+      <p class="price">₦280,000 <small style="color:#a39b8e">one-off</small></p>
+      <ul>
+        <li>Everything in Starter</li>
+        <li>Editorial design with Chair and Lounge menus</li>
+        <li>"How a visit works", payment options and FAQ</li>
+        <li>Booking form that opens a pre-written WhatsApp message</li>
+        <li>Google Maps link, SEO and Facebook share preview</li>
+        <li>Shop photos styled in, plus 2 rounds of edits</li>
+      </ul>
+      <a href="affordable/">View demo →</a>
+    </article>
+
+    <article class="tier">
+      <span class="kicker">Tier 03</span>
+      <h2>Signature</h2>
+      <p class="meta">A brand experience, about 3 weeks.</p>
+      <p class="price">₦850,000 <small>one-off</small></p>
+      <ul>
+        <li>Everything in Standard</li>
+        <li>"Blade" hero: the wordmark is sliced in half on load</li>
+        <li>Razor-wipe scroll from the Chair into the Lounge</li>
+        <li>Live open/closed status and a ₦ ⇄ USDT price toggle</li>
+        <li>FC Night countdown and 3-step booking with a ticket</li>
+        <li>Motion design, accessibility and performance pass</li>
+      </ul>
+      <a href="expensive/">View demo →</a>
+    </article>
+  </div>
+  <p class="meta" style="margin-top:28px">Menu prices, lounge rates and hours in the demos are samples, to be replaced with the shop's real ones. A .com.ng domain is billed separately (about ₦15,000/yr).</p>
+
+  <div class="refs">
+    <p class="kicker">Design references</p>
+    <ul>
+      <li><a href="https://www.awwwards.com/sites/rendezvous-barbers" rel="noopener">Rendezvous Barbers</a>, Awwwards Honorable Mention 2024: editorial serif type and one loud accent colour</li>
+      <li><a href="https://www.awwwards.com/sites/blind-barber-10-year" rel="noopener">Blind Barber</a>, Awwwards Site of the Day: a barbershop with a second room behind it</li>
+      <li><a href="https://www.awwwards.com/sites/don-barber-groom" rel="noopener">Don Barber &amp; Groom</a>, Awwwards Honorable Mention: cream palette and an "affordable luxury" feel</li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>

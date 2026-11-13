@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cryptocut — Barbershop &amp; Gaming Lounge, Port Harcourt</title>
+<meta name="description" content="Cryptocut: a barbershop with a PS5 lounge in Peace Valley Estate, off Trans Woji Road, Port Harcourt. Book in three taps on WhatsApp and pay in Naira or crypto.">
+<meta property="og:title" content="Cryptocut — Cut. Play. Repeat.">
+<meta property="og:description" content="Barbershop & gaming lounge, Port Harcourt.">
+<meta name="theme-color" content="#f3ece0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23f3ece0'/><text x='16' y='23' font-family='Georgia' font-style='italic' font-size='20' fill='%23111' text-anchor='middle'>C</text><path d='M2 26 30 8' stroke='%23f7931a' stroke-width='2'/></svg>">
+<!--
+  TIER: EXPENSIVE — "Two rooms". Art direction distilled from Awwwards
+  barbershop winners (Rendezvous Barbers HM 2024 — editorial serif + one loud
+  accent; Blind Barber SOTD — a barbershop with a second room behind it).
+  Signature moments:
+    1. Blade hero — the italic wordmark is sliced along a diagonal on load and
+       parts further as you scroll.
+    2. Razor wipe — scrolling from The Chair into The Lounge, an orange-edged
+       blade sweeps the page from cream to black (scroll-scrubbed).
+  Plus: live "open now" status in Lagos time, ₦ ⇄ USDT price toggle (CoinGecko,
+  offline fallback), Friday FC night countdown, 3-step WhatsApp booking.
+  Full reduced-motion + keyboard support.
+  Prices + hours are SAMPLES; phone is from a public directory — confirm.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#f3ece0; --paper-2:#ebe2d3; --ink:#111110; --ink-2:#1a1917; --ink-line:#2e2c29; --mute:#6f675b; --mute-d:#a39b8e; --line:#d6ccbb;
+    --btc:#f7931a; --btc-ink:#b4630a;
+    --serif:"Instrument Serif",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+    --pad:clamp(16px,4vw,56px); --max:1320px;
+    --ease:cubic-bezier(.16,1,.3,1); --ease-cut:cubic-bezier(.77,0,.18,1);
+  }
+  * { box-sizing:border-box; margin:0; }
+  html { scroll-padding-top:84px; }
+  body { background:var(--paper); color:var(--ink); font:400 16px/1.6 Inter,system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:var(--btc); color:var(--ink); }
+  a { color:inherit; }
+  button { font:inherit; color:inherit; }
+  :focus-visible { outline:2px solid var(--btc); outline-offset:3px; }
+  .wrap { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+  .kicker { font:500 12px/1.2 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--mute); }
+  em { font-style:italic; }
+  .skip { position:absolute; left:-999px; top:8px; background:var(--ink); color:var(--paper); padding:8px 12px; z-index:999; }
+  .skip:focus { left:8px; }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+  /* ---------- header ---------- */
+  header { position:fixed; inset:0 0 auto; z-index:60; transition:background .4s, color .4s, border-color .4s; border-bottom:1px solid transparent; }
+  header.solid { background:rgba(243,236,224,.88); backdrop-filter:blur(12px); border-color:var(--line); }
+  body.night header.solid { background:rgba(17,17,16,.85); border-color:var(--ink-line); color:var(--paper); }
+  .nav { height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .mark { font:italic 400 26px/1 var(--serif); text-decoration:none; }
+  .mark span { color:var(--btc-ink); }
+  body.night .mark span { color:var(--btc); }
+  .nav ul { display:flex; gap:28px; list-style:none; padding:0; }
+  .nav ul a { text-decoration:none; font-size:14px; position:relative; }
+  .nav ul a::after { content:""; position:absolute; left:0; right:0; bottom:-3px; height:1px; background:currentColor; transform:scaleX(0); transform-origin:right; transition:transform .5s var(--ease); }
+  .nav ul a:hover::after { transform:scaleX(1); transform-origin:left; }
+  .status { display:inline-flex; align-items:center; gap:8px; font:500 12px var(--mono); }
+  .status i { width:8px; height:8px; border-radius:50%; background:#9a9184; }
+  .status.open i { background:#2fa84f; box-shadow:0 0 0 4px rgba(47,168,79,.15); }
+  .pill { display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:var(--paper); text-decoration:none; border:0; font-weight:600; font-size:14px; padding:12px 20px; border-radius:99px; cursor:pointer; transition:gap .4s var(--ease), background .2s; }
+  .pill:hover { gap:16px; }
+  body.night .nav .pill { background:var(--btc); color:var(--ink); }
+  @media (max-width:960px) { .nav ul { display:none; } }
+  @media (max-width:560px) { .status { display:none; } }
+
+  /* ---------- hero (blade) ---------- */
+  .hero { position:relative; min-height:100svh; display:grid; grid-template-rows:1fr auto; padding-top:76px; overflow:hidden; }
+  .stage { position:relative; display:grid; place-items:center; }
+  .word { font:italic 400 clamp(110px,24vw,400px)/.8 var(--serif); letter-spacing:-.045em; text-align:center; white-space:nowrap; user-select:none; padding:0 .05em; }
+  .word .ln { display:block; }
+  .word .ln:last-child { color:var(--btc-ink); padding-left:.9em; }
+  .half { position:absolute; inset:0; display:grid; place-items:center; will-change:transform; }
+  .half.top { clip-path:polygon(0 0,100% 0,100% 40%,0 60%); }
+  .half.bot { clip-path:polygon(0 60%,100% 40%,100% 100%,0 100%); }
+  .ghost { visibility:hidden; }
+  .blade { position:absolute; left:-5%; right:-5%; top:50%; height:2px; background:var(--btc); transform:rotate(-7deg) scaleX(0); transform-origin:left; }
+  .under { position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
+  .under span { font:500 clamp(10px,1vw,13px) var(--mono); letter-spacing:.45em; text-transform:uppercase; color:var(--mute); transform:rotate(-7deg); opacity:0; }
+  .hero-foot { display:grid; grid-template-columns:1fr auto 1fr; align-items:end; gap:24px; padding-bottom:32px; }
+  .hero-foot p { max-width:32ch; font-size:clamp(15px,1.3vw,18px); }
+  .hero-foot .mid { font:500 12px var(--mono); color:var(--mute); text-align:center; }
+  .hero-foot .right { justify-self:end; }
+  .hero-foot > * { opacity:0; transform:translateY(14px); }
+  .cut .blade { animation:slice 1s var(--ease-cut) .3s forwards; }
+  .cut .half.top { animation:up 1.2s var(--ease) 1.05s forwards; }
+  .cut .half.bot { animation:down 1.2s var(--ease) 1.05s forwards; }
+  .cut .under span { animation:fade .8s ease 1.5s forwards; }
+  .cut .hero-foot > * { animation:rise .9s var(--ease) forwards; }
+  .cut .hero-foot > :nth-child(1) { animation-delay:1.35s; } .cut .hero-foot > :nth-child(2) { animation-delay:1.45s; } .cut .hero-foot > :nth-child(3) { animation-delay:1.55s; }
+  @keyframes slice { 0% { transform:rotate(-7deg) scaleX(0); } 70% { transform:rotate(-7deg) scaleX(1); opacity:1; } 100% { transform:rotate(-7deg) scaleX(1); opacity:0; } }
+  @keyframes up { to { transform:translate(-1%,-2.4%); } }
+  @keyframes down { to { transform:translate(1%,2.4%); } }
+  @keyframes fade { to { opacity:1; } }
+  @keyframes rise { to { opacity:1; transform:none; } }
+  @media (max-width:760px) { .hero-foot { grid-template-columns:1fr; } .hero-foot .mid { display:none; } .hero-foot .right { justify-self:start; } }
+
+  /* ---------- reveal ---------- */
+  .rv { opacity:0; transform:translateY(26px); transition:opacity 1s var(--ease), transform 1s var(--ease); }
+  .rv.in { opacity:1; transform:none; }
+
+  section { position:relative; padding:clamp(88px,12vw,168px) 0; }
+  h2 { font:400 clamp(52px,8vw,128px)/.9 var(--serif); letter-spacing:-.03em; }
+  h2 em { color:var(--btc-ink); }
+
+  /* ---------- statement ---------- */
+  .statement { display:grid; grid-template-columns:220px 1fr; gap:40px; border-top:1px solid var(--line); padding-top:28px; }
+  .statement p.big { font:400 clamp(32px,4.4vw,66px)/1.05 var(--serif); letter-spacing:-.015em; max-width:22ch; }
+  .statement p.big em { color:var(--btc-ink); }
+  @media (max-width:900px) { .statement { grid-template-columns:1fr; gap:16px; } }
+
+  /* ---------- the work (reel) ---------- */
+  .work-head { display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-bottom:40px; }
+  .reel-ctl { display:flex; align-items:center; gap:14px; }
+  .reel-ctl .count-lbl { font:500 13px var(--mono); color:var(--mute); min-width:64px; text-align:right; }
+  .reel-ctl button { width:52px; height:52px; border-radius:50%; border:1px solid var(--ink); background:none; cursor:pointer; font-size:20px; transition:background .2s, color .2s; }
+  .reel-ctl button:hover { background:var(--ink); color:var(--paper); }
+  .reel { --edge:max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad))); display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding:0 var(--edge) 8px; scroll-padding-inline:var(--edge); scrollbar-width:none; cursor:grab; }
+  .reel::-webkit-scrollbar { display:none; }
+  .reel.drag { cursor:grabbing; scroll-snap-type:none; }
+  .shot { flex:0 0 clamp(260px,28vw,420px); scroll-snap-align:start; margin:0; }
+  .shot.wide { flex-basis:clamp(300px,46vw,700px); }
+  .shot .frame { position:relative; aspect-ratio:4/5; overflow:hidden; border-radius:4px; background:var(--paper-2); clip-path:polygon(0 0,0 0,0 100%,0 100%); transition:clip-path 1.3s var(--ease-cut); }
+  .shot.wide .frame { aspect-ratio:7/5; }
+  .shot.in .frame { clip-path:polygon(0 0,100% 0,100% 100%,0 100%); }
+  .shot img { width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.12); transition:transform 1.8s var(--ease); pointer-events:none; user-select:none; }
+  .shot.in img { transform:scale(1); }
+  .shot .frame::after { content:""; position:absolute; inset:0; background:linear-gradient(105deg, transparent 48%, var(--btc) 49.6%, transparent 51%); background-size:300% 100%; background-position:100% 0; opacity:0; pointer-events:none; }
+  .shot.in .frame::after { animation:glint 1.3s var(--ease-cut) forwards; }
+  @keyframes glint { 0% { opacity:1; background-position:100% 0; } 100% { opacity:0; background-position:0 0; } }
+  .shot figcaption { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding-top:14px; border-top:1px solid var(--ink); margin-top:14px; }
+  .shot figcaption b { font:400 clamp(24px,2.2vw,32px)/1 var(--serif); font-weight:400; }
+  .shot figcaption span { font:400 12px var(--mono); color:var(--mute); white-space:nowrap; }
+  .credit { font:400 11px var(--mono); color:var(--mute); margin-top:24px; }
+  @media (max-width:700px) { .shot, .shot.wide { flex-basis:78vw; } .shot.wide .frame { aspect-ratio:4/5; } }
+  @media (prefers-reduced-motion:reduce) { .shot .frame { clip-path:none; } .shot img { transform:none; } }
+
+  /* ---------- the chair ---------- */
+  .sec-head { display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-bottom:48px; }
+  .toggle { display:inline-flex; border:1px solid currentColor; border-radius:99px; padding:3px; }
+  .toggle button { background:none; border:0; padding:8px 16px; border-radius:99px; font:500 13px var(--mono); cursor:pointer; opacity:.6; transition:opacity .2s, background .3s; }
+  .toggle button[aria-pressed="true"] { background:var(--ink); color:var(--paper); opacity:1; }
+  .rate { font:400 12px var(--mono); color:var(--mute); margin-top:8px; text-align:right; }
+  .svc { list-style:none; padding:0; border-top:1px solid var(--ink); }
+  .svc li { border-bottom:1px solid var(--line); }
+  .svc a { display:grid; grid-template-columns:64px 1fr auto 40px; gap:20px; align-items:baseline; padding:26px 0; text-decoration:none; position:relative; }
+  .svc .no { font:400 13px var(--mono); color:var(--mute); }
+  .svc h3 { font:400 clamp(32px,3.6vw,56px)/1 var(--serif); letter-spacing:-.01em; transition:transform .6s var(--ease), color .3s; }
+  .svc p { color:var(--mute); font-size:15px; margin-top:8px; }
+  .svc .price { font:400 clamp(26px,2.6vw,40px)/1 var(--serif); font-variant-numeric:tabular-nums; text-align:right; }
+  .svc .price small { display:block; font:400 11px var(--mono); color:var(--mute); margin-top:6px; }
+  .svc .arrow { font-size:22px; opacity:0; transform:translateX(-10px); transition:opacity .3s, transform .5s var(--ease); justify-self:end; }
+  .svc a:hover h3, .svc a:focus-visible h3 { transform:translateX(12px); font-style:italic; color:var(--btc-ink); }
+  .svc a:hover .arrow, .svc a:focus-visible .arrow { opacity:1; transform:none; }
+  @media (max-width:700px) {
+    .svc a { grid-template-columns:1fr auto; gap:6px 16px; }
+    .svc .no { grid-column:1/-1; } .svc .arrow { display:none; }
+  }
+
+  /* ---------- razor wipe → lounge ---------- */
+  .lounge { color:var(--paper); isolation:isolate; --p:0; }
+  .lounge::before, .lounge::after { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; }
+  /* orange razor edge sits just ahead of the dark fill */
+  .lounge::before { background:var(--btc); clip-path:polygon(0 0, calc(var(--p) * 140% - 39%) 0, calc(var(--p) * 140% - 0%) 100%, 0 100%); }
+  .lounge::after  { background:var(--ink); clip-path:polygon(0 0, calc(var(--p) * 140% - 40%) 0, calc(var(--p) * 140% - 1%) 100%, 0 100%); }
+  .lounge .wrap { opacity:calc((var(--p) - .55) * 3); }
+  .lounge h2 em { color:var(--btc); }
+  .lounge .kicker { color:var(--mute-d); }
+  .lounge-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(32px,5vw,80px); margin-top:48px; }
+  .rates { list-style:none; padding:0; border-top:1px solid var(--paper); }
+  .rates li { display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:22px 0; border-bottom:1px solid var(--ink-line); }
+  .rates b { font:400 clamp(26px,2.6vw,38px)/1 var(--serif); }
+  .rates span { font:400 clamp(24px,2.4vw,34px)/1 var(--serif); color:var(--btc); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .rates small { display:block; font-size:14px; color:var(--mute-d); margin-top:6px; }
+  .fc { border:1px solid var(--ink-line); border-radius:20px; padding:clamp(24px,3vw,40px); background:var(--ink-2); }
+  .fc h3 { font:italic 400 clamp(36px,3.6vw,52px)/1 var(--serif); margin:14px 0 10px; }
+  .fc p { color:var(--mute-d); }
+  .count { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:28px 0; }
+  .count div { background:var(--ink); border:1px solid var(--ink-line); border-radius:12px; padding:14px 8px; text-align:center; }
+  .count b { display:block; font:400 clamp(28px,3vw,44px)/1 var(--mono); color:var(--paper); font-variant-numeric:tabular-nums; }
+  .count span { font:400 10px var(--mono); letter-spacing:.12em; color:var(--mute-d); }
+  .games { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+  .games span { border:1px solid var(--ink-line); border-radius:99px; padding:7px 14px; font-size:13px; color:var(--mute-d); }
+  @media (max-width:900px) { .lounge-grid { grid-template-columns:1fr; } }
+
+  /* ---------- booking (night) ---------- */
+  .book { background:var(--ink); color:var(--paper); padding-top:0; }
+  .book h2 em { color:var(--btc); }
+  .book .kicker { color:var(--mute-d); }
+  .panel-wrap { margin-top:48px; display:grid; grid-template-columns:260px 1fr; gap:clamp(24px,5vw,72px); }
+  .stepper { list-style:none; padding:0; border-left:1px solid var(--ink-line); }
+  .stepper li { padding:12px 0 12px 20px; position:relative; color:var(--mute-d); font-size:15px; }
+  .stepper li::before { content:""; position:absolute; left:-1px; top:0; bottom:0; width:2px; background:transparent; transition:background .3s; }
+  .stepper li.on { color:var(--paper); } .stepper li.on::before { background:var(--btc); }
+  .stepper li.done { color:var(--paper); } .stepper li.done::after { content:" ✓"; color:var(--btc); }
+  .stepper .kicker { display:block; color:inherit; opacity:.6; margin-bottom:2px; }
+  .panel { display:none; } .panel.on { display:block; animation:pin .6s var(--ease); }
+  @keyframes pin { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+  .opts { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+  .opt { text-align:left; background:var(--ink-2); border:1px solid var(--ink-line); border-radius:14px; padding:18px; cursor:pointer; transition:border-color .2s, transform .3s var(--ease); }
+  .opt:hover { border-color:var(--mute-d); transform:translateY(-2px); }
+  .opt[aria-checked="true"] { border-color:var(--btc); background:#1f1a12; }
+  .opt b { display:block; font:400 26px/1.05 var(--serif); }
+  .opt span { font:400 12px var(--mono); color:var(--mute-d); }
+  .days { display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; margin-bottom:16px; }
+  .day { flex:0 0 auto; min-width:78px; padding:12px 8px; background:var(--ink-2); border:1px solid var(--ink-line); border-radius:14px; cursor:pointer; text-align:center; }
+  .day b { display:block; font:400 30px/1 var(--serif); }
+  .day span { font:400 10px var(--mono); letter-spacing:.1em; color:var(--mute-d); }
+  .day[aria-checked="true"] { border-color:var(--btc); background:#1f1a12; }
+  .times { display:grid; grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); gap:8px; }
+  .time { padding:11px 0; background:var(--ink-2); border:1px solid var(--ink-line); border-radius:10px; font:500 14px var(--mono); cursor:pointer; }
+  .time:disabled { opacity:.3; text-decoration:line-through; cursor:not-allowed; }
+  .time[aria-checked="true"] { background:var(--btc); color:var(--ink); border-color:var(--btc); }
+  .fields { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .fields label { display:grid; gap:6px; font:400 12px var(--mono); letter-spacing:.06em; color:var(--mute-d); }
+  .fields .full { grid-column:1/-1; }
+  .fields input, .fields textarea { font:400 16px Inter,sans-serif; color:var(--paper); background:var(--ink-2); border:1px solid var(--ink-line); padding:14px; border-radius:12px; }
+  .fields input:focus, .fields textarea:focus { outline:none; border-color:var(--btc); }
+  .pays { display:flex; flex-wrap:wrap; gap:8px; }
+  .pays .opt { padding:10px 16px; border-radius:99px; }
+  .pays .opt b { font:500 14px Inter,sans-serif; }
+  .bar { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin-top:28px; padding-top:20px; border-top:1px solid var(--ink-line); }
+  .sum { font:400 13px var(--mono); color:var(--mute-d); }
+  .go { background:var(--btc); color:var(--ink); border:0; border-radius:99px; padding:15px 24px; font-weight:600; cursor:pointer; display:inline-flex; gap:10px; text-decoration:none; transition:gap .4s var(--ease); }
+  .go:hover { gap:16px; } .go:disabled { opacity:.3; cursor:not-allowed; }
+  .back { background:none; border:1px solid var(--ink-line); color:var(--paper); border-radius:99px; padding:14px 20px; cursor:pointer; }
+  .err { color:#ff9a8a; font:400 13px var(--mono); min-height:1em; margin-top:10px; }
+  .ticket { max-width:520px; background:var(--paper); color:var(--ink); border-radius:20px; padding:28px; position:relative; }
+  .ticket::before, .ticket::after { content:""; position:absolute; top:72%; width:28px; height:28px; border-radius:50%; background:var(--ink); }
+  .ticket::before { left:-14px; } .ticket::after { right:-14px; }
+  .ticket h3 { font:italic 400 44px/1 var(--serif); margin:8px 0 18px; }
+  .ticket dl { display:grid; grid-template-columns:auto 1fr; gap:6px 20px; font-size:15px; }
+  .ticket dt { color:var(--mute); } .ticket dd { text-align:right; }
+  .ticket .tear { border-top:2px dashed var(--line); margin:22px 0 14px; }
+  .ticket .ref { font:400 12px var(--mono); color:var(--btc-ink); }
+  @media (max-width:860px) { .panel-wrap { grid-template-columns:1fr; } .stepper { display:flex; border-left:0; border-top:1px solid var(--ink-line); } .stepper li { flex:1; padding:10px 0 0; font-size:13px; } .stepper li::before { top:-1px; left:0; right:0; bottom:auto; width:auto; height:2px; } .fields { grid-template-columns:1fr; } }
+
+  /* ---------- visit (back to day) ---------- */
+  .visit { display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(32px,5vw,80px); align-items:end; }
+  address { font:400 clamp(36px,4.4vw,68px)/1 var(--serif); font-style:normal; letter-spacing:-.02em; margin-top:20px; }
+  address em { color:var(--btc-ink); }
+  .hours { list-style:none; padding:0; border-top:1px solid var(--ink); }
+  .hours li { display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--line); }
+  .hours li.today { font-weight:600; }
+  .hours li.today span:first-child::after { content:" · today"; color:var(--btc-ink); font-weight:400; }
+  .contact { display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
+  .pill.ghost { background:none; color:var(--ink); border:1px solid var(--ink); }
+  @media (max-width:900px) { .visit { grid-template-columns:1fr; } }
+
+  details { border-top:1px solid var(--line); }
+  details:last-child { border-bottom:1px solid var(--line); }
+  summary { list-style:none; cursor:pointer; padding:24px 0; display:flex; justify-content:space-between; gap:16px; font:400 clamp(24px,2.2vw,32px)/1.1 var(--serif); }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; font:400 22px Inter,sans-serif; color:var(--btc-ink); transition:transform .4s var(--ease); }
+  details[open] summary::after { transform:rotate(45deg); }
+  details p { color:var(--mute); padding-bottom:24px; max-width:60ch; }
+  .faq { display:grid; grid-template-columns:1fr 1.5fr; gap:56px; }
+  @media (max-width:900px) { .faq { grid-template-columns:1fr; } }
+
+  footer { background:var(--ink); color:var(--paper); padding:64px 0 28px; overflow:hidden; }
+  .foot-row { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; font-size:14px; color:var(--mute-d); }
+  .foot-row a { color:var(--paper); }
+  .foot-word { font:italic 400 clamp(90px,22vw,380px)/.8 var(--serif); letter-spacing:-.05em; text-align:center; margin-top:40px; white-space:nowrap; }
+  .foot-word span { color:var(--btc); }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after { animation-duration:.001ms !important; animation-delay:0s !important; transition-duration:.001ms !important; }
+    .rv { opacity:1; transform:none; }
+    .lounge { --p:1 !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header id="hdr">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="mark" href="#top" aria-label="Cryptocut, home">Cryptocut<span>_</span></a>
+    <ul>
+      <li><a href="#work">The work</a></li>
+      <li><a href="#chair">The chair</a></li>
+      <li><a href="#lounge">The lounge</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <span class="status" id="status" role="status"><i aria-hidden="true"></i><span>Checking…</span></span>
+    <a class="pill" href="#book">Book <span aria-hidden="true">→</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- HERO: blade cut -->
+  <div class="hero" id="top">
+    <h1 class="sr">Cryptocut, barbershop and gaming lounge in Port Harcourt</h1>
+    <div class="stage" aria-hidden="true">
+      <div class="word ghost"><span class="ln">Crypto</span><span class="ln">cut.</span></div>
+      <div class="under"><span>Cut · Play · Repeat</span></div>
+      <div class="half top" id="hTop"><div class="word"><span class="ln">Crypto</span><span class="ln">cut.</span></div></div>
+      <div class="half bot" id="hBot"><div class="word"><span class="ln">Crypto</span><span class="ln">cut.</span></div></div>
+      <div class="blade"></div>
+    </div>
+    <div class="wrap hero-foot">
+      <p>A barbershop with a PS5 lounge in Peace Valley Estate, Port Harcourt. Get a sharp cut, then stay for a match.</p>
+      <span class="mid">↓ SCROLL</span>
+      <a class="pill right" href="#book">Book on WhatsApp <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+
+  <!-- STATEMENT -->
+  <section style="padding-top:clamp(56px,8vw,96px)">
+    <div class="wrap statement">
+      <p class="kicker rv">00 — The idea</p>
+      <p class="big rv">Most barbershops make you wait. <em>We made the wait the best part:</em> a fresh fade in one room and a controller in the other.</p>
+    </div>
+  </section>
+
+  <!-- THE WORK — DEMO PHOTOS (Unsplash, free licence); replace with Cryptocut's own work before launch -->
+  <section id="work" style="padding-top:0">
+    <div class="wrap work-head">
+      <div><p class="kicker rv">01 — The work</p><h2 class="rv" style="margin-top:14px">Fresh off <em>the chair</em></h2></div>
+      <div class="reel-ctl rv">
+        <span class="count-lbl" id="reelCount" aria-live="polite">01 / 07</span>
+        <button type="button" id="reelPrev" aria-label="Previous photo">←</button>
+        <button type="button" id="reelNext" aria-label="Next photo">→</button>
+      </div>
+    </div>
+    <div class="reel" id="reel" tabindex="0" aria-label="Gallery of recent cuts, scroll sideways">
+      <figure class="shot wide"><div class="frame"><img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=1100&h=786&q=72" width="1100" height="786" alt="Barber shaping a client's curly top and taper fade" decoding="async"></div><figcaption><b>Curly top, <em>taper fade</em></b><span>45 MIN · ₦4,000</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><img src="https://images.unsplash.com/photo-1744636547816-dcb483f60f46?auto=format&fit=crop&w=640&h=800&q=72" width="640" height="800" alt="Smiling client with a high-top and a hard part design" loading="lazy" decoding="async"></div><figcaption><b>Hard part</b><span>DESIGN · FROM ₦4,000</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><img src="https://images.unsplash.com/photo-1686671805337-7d8aa64b965f?auto=format&fit=crop&w=640&h=800&q=72" width="640" height="800" alt="Barber lining up a client's low cut" loading="lazy" decoding="async"></div><figcaption><b>Low cut</b><span>30 MIN · ₦3,000</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><img src="https://images.unsplash.com/photo-1559925073-ffe31c1afaee?auto=format&fit=crop&w=640&h=800&q=72" width="640" height="800" alt="Black and white profile of a fresh skin fade" loading="lazy" decoding="async"></div><figcaption><b>Skin fade</b><span>45 MIN · ₦4,000</span></figcaption></figure>
+      <figure class="shot wide"><div class="frame"><img src="https://images.unsplash.com/photo-1635273051839-003bf06a8751?auto=format&fit=crop&w=1100&h=786&q=72" width="1100" height="786" alt="Close-up of clippers blending a fade" loading="lazy" decoding="async"></div><figcaption><b>The blend, <em>up close</em></b><span>EVERY CUT</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><img src="https://images.unsplash.com/photo-1512864084360-7c0c4d0a0845?auto=format&fit=crop&w=640&h=800&q=72" width="640" height="800" alt="Barber detailing a client's beard line" loading="lazy" decoding="async"></div><figcaption><b>Beard line-up</b><span>20 MIN · ₦2,000</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><img src="https://images.unsplash.com/photo-1590540180006-36971c22e35c?auto=format&fit=crop&w=640&h=800&q=72" width="640" height="800" alt="A busy chair in a dimly lit barbershop" loading="lazy" decoding="async"></div><figcaption><b>Saturday rush</b><span>BOOK AHEAD</span></figcaption></figure>
+    </div>
+    <p class="wrap credit">Demo photos via Unsplash. To be replaced with Cryptocut's own work.</p>
+  </section>
+
+  <!-- THE CHAIR -->
+  <section id="chair" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker rv">02 — The chair</p><h2 class="rv" style="margin-top:14px">Sharp <em>cuts</em></h2></div>
+        <div class="rv">
+          <div class="toggle" role="group" aria-label="Show prices in">
+            <button aria-pressed="true" data-c="ngn">₦ Naira</button>
+            <button aria-pressed="false" data-c="usdt">USDT</button>
+          </div>
+          <p class="rate" id="rate">Rate: loading…</p>
+        </div>
+      </div>
+      <ul class="svc" id="svc"></ul>
+    </div>
+  </section>
+
+  <!-- THE LOUNGE (razor wipe) -->
+  <section class="lounge" id="lounge">
+    <div class="wrap">
+      <p class="kicker">03 — The lounge</p>
+      <h2 style="margin-top:14px">Game <em>on.</em></h2>
+      <div class="lounge-grid">
+        <ul class="rates" id="rates"></ul>
+        <div class="fc">
+          <p class="kicker">Every Friday · 7pm</p>
+          <h3>FC Night</h3>
+          <p>A weekly EA FC knockout. The entry fee is ₦2,000, and the winner's next cut is free.</p>
+          <div class="count" id="count" aria-live="off">
+            <div><b data-u="d">0</b><span>DAYS</span></div>
+            <div><b data-u="h">00</b><span>HRS</span></div>
+            <div><b data-u="m">00</b><span>MIN</span></div>
+            <div><b data-u="s">00</b><span>SEC</span></div>
+          </div>
+          <a class="go" href="https://wa.me/2348168024585?text=Hi%20Cryptocut%2C%20put%20me%20down%20for%20FC%20Night%20this%20Friday." rel="noopener">Reserve a spot <span aria-hidden="true">→</span></a>
+          <div class="games" aria-label="Games available"><span>EA FC</span><span>Mortal Kombat 1</span><span>NBA 2K</span><span>Tekken 8</span><span>Call of Duty</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="book" id="book">
+    <div class="wrap">
+      <p class="kicker">04 — Book</p>
+      <h2 style="margin-top:14px">Three taps, <em>then WhatsApp.</em></h2>
+
+      <div class="panel-wrap">
+        <ol class="stepper" aria-label="Booking progress">
+          <li class="on" id="s1"><span class="kicker">Step 1</span>Service</li>
+          <li id="s2"><span class="kicker">Step 2</span>Day &amp; time</li>
+          <li id="s3"><span class="kicker">Step 3</span>Your details</li>
+        </ol>
+        <div>
+          <div class="panel on" id="p1">
+            <div class="opts" role="radiogroup" aria-label="Choose a service" id="svcOpts"></div>
+            <div class="bar"><span class="sum" id="sum1">Pick a service</span><button class="go" id="n1" disabled>Next <span aria-hidden="true">→</span></button></div>
+          </div>
+          <div class="panel" id="p2">
+            <div class="days" role="radiogroup" aria-label="Choose a day" id="days"></div>
+            <div class="times" role="radiogroup" aria-label="Choose a time" id="times"><p class="sum">Pick a day first.</p></div>
+            <div class="bar"><button class="back" data-back="1">← Back</button><span class="sum" id="sum2"></span><button class="go" id="n2" disabled>Next <span aria-hidden="true">→</span></button></div>
+          </div>
+          <div class="panel" id="p3">
+            <form id="det" novalidate>
+              <div class="fields">
+                <label>Name<input name="name" autocomplete="name" required></label>
+                <label>Phone (optional)<input name="phone" type="tel" autocomplete="tel" placeholder="080…"></label>
+                <div class="full"><span class="kicker" style="display:block;margin-bottom:8px;color:var(--mute-d)">Paying with</span>
+                  <div class="pays" role="radiogroup" aria-label="Payment method" id="pays"></div></div>
+                <label class="full">Note for the barber<textarea name="note" rows="2" placeholder="Style, reference, first visit…"></textarea></label>
+              </div>
+              <p class="err" id="err" aria-live="assertive"></p>
+              <div class="bar"><button type="button" class="back" data-back="2">← Back</button><span class="sum" id="sum3"></span><button class="go" type="submit">Get my ticket <span aria-hidden="true">→</span></button></div>
+            </form>
+          </div>
+          <div class="panel" id="p4" aria-live="polite">
+            <div class="ticket" id="ticket" tabindex="-1"></div>
+            <div class="bar" style="border:0">
+              <a class="go" id="waSend" href="#" rel="noopener">Send on WhatsApp <span aria-hidden="true">→</span></a>
+              <button class="back" id="again">Book another</button>
+            </div>
+            <p class="sum">Your slot is confirmed once the shop replies on WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="wrap visit">
+      <div>
+        <p class="kicker rv">05 — Visit</p>
+        <address class="rv">No. 1 Peace Valley Estate, <em>off Trans Woji Road,</em> Port Harcourt</address>
+        <div class="contact rv">
+          <a class="pill" href="https://www.google.com/maps/search/?api=1&query=Peace+Valley+Estate+Trans+Woji+Road+Port+Harcourt" rel="noopener">Directions <span aria-hidden="true">→</span></a>
+          <a class="pill ghost" href="tel:+2348168024585">0816 802 4585</a>
+        </div>
+      </div>
+      <ul class="hours rv" id="hours" aria-label="Opening hours"></ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap faq">
+      <div><p class="kicker rv">06 — FAQ</p><h2 class="rv" style="margin-top:14px">Asked <em>&amp; answered</em></h2></div>
+      <div class="rv">
+        <details><summary>Do I need to book, or can I walk in?</summary><p>Walk-ins are welcome, but booked clients go first. Booking takes three taps and a WhatsApp message.</p></details>
+        <details><summary>Can I use the lounge without a haircut?</summary><p>Yes. The PS5s are open to everyone during shop hours, and you pay by the half hour.</p></details>
+        <details><summary>How does crypto payment work?</summary><p>Ask for the wallet address at the counter. Send the Naira price in USDT (TRC-20) or BTC at the day's rate, then show the confirmation. Cash, transfer and POS are always fine too.</p></details>
+        <details><summary>Do you do home service?</summary><p>Yes, by arrangement. Send your location and preferred time on WhatsApp.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© Cryptocut Barbershop &amp; Gaming · Port Harcourt</span>
+    <a href="https://www.facebook.com/Cryptocut/" rel="noopener">Facebook</a>
+  </div>
+  <div class="foot-word" aria-hidden="true">Cryptocut<span>.</span></div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+  const WA = '2348168024585';
+
+  /* ---------- data (SAMPLES — confirm with the shop) ---------- */
+  const CUTS = [
+    { id:'fade',  name:'Low cut / skin fade', ngn:4000, min:45, desc:'Blended down to the skin with a crisp line-up.' },
+    { id:'cut',   name:'Haircut',             ngn:3000, min:30, desc:'Clipper or scissors, shaped and finished clean.' },
+    { id:'combo', name:'Cut + beard',         ngn:5000, min:60, desc:'Any cut, plus beard shaped, lined and oiled.' },
+    { id:'beard', name:'Beard trim & line-up',ngn:2000, min:20, desc:'Sharp edges, razor detail, hot towel.' },
+    { id:'kids',  name:'Kids (under 12)',     ngn:2500, min:30, desc:'Patient hands, fast cut.' },
+    { id:'dye',   name:'Dye / colour',        ngn:6000, min:60, desc:'Black, blonde or a custom colour.' },
+  ];
+  const LOUNGE = [
+    { name:'PS5, 30 minutes', ngn:1000, note:'EA FC, MK1, NBA 2K, Tekken 8.' },
+    { name:'PS5, 1 hour',     ngn:1800, note:'Two controllers included.' },
+    { name:'Cut + 1 hour',    ngn:5000, note:'Any haircut plus an hour in the lounge.' },
+  ];
+  const BOOKABLE = [...CUTS, { id:'cutplay', name:'Cut + 1 hr PS5', ngn:5000, min:90 }];
+  // Lagos hours: [open, close] in 24h, 0 = Sunday
+  const HOURS = { 0:[13,20], 1:[9,21], 2:[9,21], 3:[9,21], 4:[9,21], 5:[9,21], 6:[9,21] };
+  const DAYN = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  let usdtNgn = 1550, live = false, cur = 'ngn';
+
+  const lagosNow = () => new Date(new Date().toLocaleString('en-US', { timeZone:'Africa/Lagos' }));
+  const ampm = h => `${h % 12 || 12}${h >= 12 ? 'pm' : 'am'}`;
+
+  /* ---------- open now ---------- */
+  const st = $('#status');
+  const setStatus = () => {
+    const n = lagosNow(), d = n.getDay(), [o, c] = HOURS[d], h = n.getHours() + n.getMinutes() / 60;
+    const open = h >= o && h < c;
+    st.classList.toggle('open', open);
+    st.lastElementChild.textContent = open ? `Open · till ${ampm(c)}` : `Closed · opens ${h < o ? ampm(o) : 'tomorrow ' + ampm(HOURS[(d + 1) % 7][0])}`;
+  };
+  setStatus(); setInterval(setStatus, 60000);
+
+  /* ---------- hours list ---------- */
+  const fmtH = h => `${String(h).padStart(2, '0')}:00`;
+  const today = lagosNow().getDay();
+  $('#hours').innerHTML = [1,2,3,4,5,6,0].map(d =>
+    `<li class="${d === today ? 'today' : ''}"><span>${DAYN[d]}</span><span>${fmtH(HOURS[d][0])} – ${fmtH(HOURS[d][1])}</span></li>`).join('');
+
+  /* ---------- scroll: header, hero blade, razor wipe ---------- */
+  const hdr = $('#hdr'), hTop = $('#hTop'), hBot = $('#hBot'), lounge = $('#lounge'), book = $('#book');
+  requestAnimationFrame(() => $('.hero').classList.add('cut'));
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const y = scrollY, vh = innerHeight;
+    hdr.classList.toggle('solid', y > vh * .6);
+    if (!reduce) {
+      const p = Math.min(y / vh, 1);
+      hTop.style.translate = `${-p * 8}% ${-p * 12}%`;
+      hBot.style.translate = `${p * 8}% ${p * 12}%`;
+      const t = lounge.getBoundingClientRect().top;
+      lounge.style.setProperty('--p', Math.max(0, Math.min(1, (vh * .95 - t) / (vh * .7))).toFixed(4));
+    }
+    const lr = lounge.getBoundingClientRect(), br = book.getBoundingClientRect();
+    document.body.classList.toggle('night', lr.top < 80 && br.bottom > 80);
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive:true });
+  addEventListener('resize', onScroll);
+  if (reduce) lounge.style.setProperty('--p', 1);
+  onScroll();
+
+  /* ---------- money ---------- */
+  const money = ngn => cur === 'ngn'
+    ? { v:'₦' + ngn.toLocaleString('en-NG'), s:'NAIRA' }
+    : { v:(ngn / usdtNgn).toFixed(2) + ' ₮', s:'USDT · ₦' + ngn.toLocaleString('en-NG') };
+
+  const renderMenus = () => {
+    $('#svc').innerHTML = CUTS.map((c, i) => {
+      const m = money(c.ngn);
+      return `<li><a href="#book" data-svc="${c.id}">
+        <span class="no">0${i + 1}</span>
+        <div><h3>${c.name}</h3><p>${c.desc} · ${c.min} min</p></div>
+        <span class="price">${m.v}<small>${m.s}</small></span>
+        <span class="arrow" aria-hidden="true">→</span></a></li>`;
+    }).join('');
+    $('#rates').innerHTML = LOUNGE.map(l => `<li><div><b>${l.name}</b><small>${l.note}</small></div><span>${money(l.ngn).v}</span></li>`).join('');
+  };
+  renderMenus();
+
+  document.querySelectorAll('.toggle button').forEach(b => b.addEventListener('click', () => {
+    cur = b.dataset.c;
+    document.querySelectorAll('.toggle button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderMenus();
+  }));
+  const rateEl = $('#rate');
+  const setRate = () => rateEl.textContent = `${live ? 'Live' : 'Approx.'} · 1 USDT ≈ ₦${Math.round(usdtNgn).toLocaleString('en-NG')}`;
+  setRate();
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=ngn')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => { if (d.tether && d.tether.ngn) { usdtNgn = d.tether.ngn; live = true; setRate(); renderMenus(); } })
+    .catch(() => {});
+
+  $('#svc').addEventListener('click', e => {
+    const a = e.target.closest('a[data-svc]'); if (!a) return;
+    e.preventDefault(); pickSvc(a.dataset.svc); go(1);
+    book.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  /* ---------- FC night countdown (next Friday 19:00 Lagos) ---------- */
+  const cd = { d:$('[data-u=d]'), h:$('[data-u=h]'), m:$('[data-u=m]'), s:$('[data-u=s]') };
+  const tickFC = () => {
+    const n = lagosNow(), t = new Date(n);
+    t.setHours(19, 0, 0, 0);
+    t.setDate(t.getDate() + ((5 - n.getDay() + 7) % 7));
+    if (t <= n) t.setDate(t.getDate() + 7);
+    let s = Math.floor((t - n) / 1000);
+    cd.d.textContent = Math.floor(s / 86400); s %= 86400;
+    cd.h.textContent = String(Math.floor(s / 3600)).padStart(2, '0'); s %= 3600;
+    cd.m.textContent = String(Math.floor(s / 60)).padStart(2, '0');
+    cd.s.textContent = String(s % 60).padStart(2, '0');
+  };
+  tickFC(); setInterval(tickFC, 1000);
+
+  /* ---------- work reel: blade reveal, counter, arrows, drag ---------- */
+  const reel = $('#reel'), shots = [...reel.querySelectorAll('.shot')], cnt = $('#reelCount');
+  if (reduce || !('IntersectionObserver' in window)) shots.forEach(s => s.classList.add('in'));
+  else {
+    const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); so.unobserve(e.target); } }), { root:null, threshold:.25 });
+    shots.forEach(s => so.observe(s));
+  }
+  const pad2 = n => String(n).padStart(2, '0');
+  const current = () => {
+    const x = reel.scrollLeft + 1;
+    let i = 0; shots.forEach((s, k) => { if (s.offsetLeft - reel.offsetLeft - parseFloat(getComputedStyle(reel).paddingLeft) <= x) i = k; });
+    return reel.scrollLeft + reel.clientWidth >= reel.scrollWidth - 4 ? shots.length - 1 : i;
+  };
+  const upd = () => cnt.textContent = `${pad2(current() + 1)} / ${pad2(shots.length)}`;
+  reel.addEventListener('scroll', () => requestAnimationFrame(upd), { passive:true });
+  const goShot = d => {
+    const i = Math.max(0, Math.min(shots.length - 1, current() + d));
+    reel.scrollTo({ left:shots[i].offsetLeft - reel.offsetLeft - parseFloat(getComputedStyle(reel).paddingLeft), behavior: reduce ? 'auto' : 'smooth' });
+  };
+  $('#reelPrev').addEventListener('click', () => goShot(-1));
+  $('#reelNext').addEventListener('click', () => goShot(1));
+  reel.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); goShot(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); goShot(-1); } });
+  // mouse drag (touch scrolls natively)
+  let dx = null, sl = 0, moved = false;
+  reel.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; dx = e.clientX; sl = reel.scrollLeft; moved = false; reel.classList.add('drag'); reel.setPointerCapture(e.pointerId); });
+  reel.addEventListener('pointermove', e => { if (dx === null) return; const d = e.clientX - dx; if (Math.abs(d) > 3) moved = true; reel.scrollLeft = sl - d; });
+  const endDrag = () => { if (dx === null) return; dx = null; reel.classList.remove('drag'); if (moved) goShot(0); };
+  reel.addEventListener('pointerup', endDrag); reel.addEventListener('pointercancel', endDrag);
+
+  /* ---------- reveal ---------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin:'0px 0px -8% 0px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  } else document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+
+  /* ---------- booking ---------- */
+  const state = { svc:null, day:null, time:null, pay:'Cash' };
+  const radio = (box, sel, fn) => box.addEventListener('click', e => {
+    const b = e.target.closest(sel); if (!b || b.disabled) return;
+    box.querySelectorAll(sel).forEach(x => x.setAttribute('aria-checked', x === b)); fn(b);
+  });
+
+  const svcOpts = $('#svcOpts');
+  svcOpts.innerHTML = BOOKABLE.map(s => `<button type="button" class="opt" role="radio" aria-checked="false" data-id="${s.id}"><b>${s.name}</b><span>${s.min} MIN · ₦${s.ngn.toLocaleString('en-NG')}</span></button>`).join('');
+  function pickSvc(id) {
+    state.svc = BOOKABLE.find(s => s.id === id);
+    svcOpts.querySelectorAll('.opt').forEach(x => x.setAttribute('aria-checked', x.dataset.id === id));
+    $('#sum1').textContent = `${state.svc.name} · ₦${state.svc.ngn.toLocaleString('en-NG')}`;
+    $('#n1').disabled = false;
+  }
+  radio(svcOpts, '.opt', b => pickSvc(b.dataset.id));
+
+  const W = ['SUN','MON','TUE','WED','THU','FRI','SAT'], M = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  const base = lagosNow(), days = [];
+  for (let i = 0; i < 8; i++) days.push(new Date(base.getFullYear(), base.getMonth(), base.getDate() + i));
+  const daysEl = $('#days'), timesEl = $('#times');
+  daysEl.innerHTML = days.map((d, i) => `<button type="button" class="day" role="radio" aria-checked="false" data-i="${i}" aria-label="${i === 0 ? 'Today' : DAYN[d.getDay()]} ${d.getDate()} ${M[d.getMonth()]}"><span>${i === 0 ? 'TODAY' : W[d.getDay()]}</span><b>${d.getDate()}</b><span>${M[d.getMonth()]}</span></button>`).join('');
+  const hsh = s => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+  radio(daysEl, '.day', b => {
+    const i = +b.dataset.i; state.day = days[i]; state.time = null; $('#n2').disabled = true;
+    const [o, c] = HOURS[state.day.getDay()], now = lagosNow(), nowM = now.getHours() * 60 + now.getMinutes();
+    const slots = [];
+    for (let m = o * 60; m + state.svc.min <= c * 60; m += 30) slots.push(m);
+    const html = slots.map(m => {
+      const lbl = `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+      const gone = (i === 0 && m <= nowM + 30) || hsh(state.day.toDateString() + lbl) % 4 === 0;
+      return `<button type="button" class="time" role="radio" aria-checked="false" data-t="${lbl}" ${gone ? `disabled aria-label="${lbl} unavailable"` : ''}>${lbl}</button>`;
+    });
+    const anyFree = html.some(h => !h.includes('disabled'));
+    timesEl.innerHTML = anyFree ? html.join('') : '<p class="sum">No slots left that day. Try another.</p>';
+    $('#sum2').textContent = `${i === 0 ? 'Today' : DAYN[state.day.getDay()]}: pick a time`;
+  });
+  radio(timesEl, '.time', b => {
+    state.time = b.dataset.t; $('#n2').disabled = false;
+    $('#sum2').textContent = `${DAYN[state.day.getDay()]} ${state.day.getDate()} ${M[state.day.getMonth()]} · ${state.time}`;
+  });
+
+  const pays = $('#pays');
+  pays.innerHTML = ['Cash','Transfer','POS','USDT','BTC'].map((p, i) => `<button type="button" class="opt" role="radio" aria-checked="${i === 0}" data-p="${p}"><b>${p}</b></button>`).join('');
+  radio(pays, '.opt', b => state.pay = b.dataset.p);
+
+  function go(n) {
+    for (let i = 1; i <= 4; i++) $('#p' + i).classList.toggle('on', i === n);
+    [1,2,3].forEach(i => { const s = $('#s' + i); s.classList.toggle('on', i === n); s.classList.toggle('done', i < n); });
+    if (n === 3) $('#sum3').textContent = `${state.svc.name} · ${W[state.day.getDay()]} ${state.time}`;
+    const f = { 1:svcOpts.querySelector('[aria-checked=true]') || svcOpts.querySelector('.opt'), 2:daysEl.querySelector('.day'), 3:$('#det [name=name]'), 4:$('#ticket') }[n];
+    if (f) f.focus({ preventScroll:true });
+  }
+  $('#n1').addEventListener('click', () => go(2));
+  $('#n2').addEventListener('click', () => go(3));
+  document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => go(+b.dataset.back)));
+
+  const esc = s => s.replace(/[<>&"]/g, c => ({ '<':'&lt;', '>':'&gt;', '&':'&amp;', '"':'&quot;' }[c]));
+  $('#det').addEventListener('submit', e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(e.target));
+    if (!d.name.trim()) { $('#err').textContent = 'Add your name so the barber knows who is coming.'; e.target.name.focus(); return; }
+    $('#err').textContent = '';
+    const when = `${DAYN[state.day.getDay()]} ${state.day.getDate()} ${M[state.day.getMonth()]}, ${state.time}`;
+    const ref = 'CC-' + hsh(d.name + when + Date.now()).toString(36).toUpperCase().slice(0, 6);
+    const amount = state.pay === 'USDT' ? `${(state.svc.ngn / usdtNgn).toFixed(2)} USDT` : `₦${state.svc.ngn.toLocaleString('en-NG')}`;
+    $('#ticket').innerHTML = `
+      <span class="kicker">Cryptocut · booking ticket</span>
+      <h3>See you soon, ${esc(d.name.trim().split(' ')[0])}.</h3>
+      <dl>
+        <dt>Service</dt><dd>${state.svc.name}</dd>
+        <dt>When</dt><dd>${when}</dd>
+        <dt>Pay with</dt><dd>${state.pay}</dd>
+        <dt>Amount</dt><dd>${amount}</dd>
+      </dl>
+      <div class="tear"></div>
+      <span class="ref">REF ${ref} · Peace Valley Estate, Trans Woji Rd</span>`;
+    const msg = `Hi Cryptocut, I'm ${d.name.trim()}${d.phone.trim() ? ' (' + d.phone.trim() + ')' : ''}. I'd like to book: ${state.svc.name}, ${when}. Paying with ${state.pay}.${d.note.trim() ? ' Note: ' + d.note.trim() : ''} Ref ${ref}`;
+    $('#waSend').href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+    go(4);
+  });
+  $('#again').addEventListener('click', () => {
+    Object.assign(state, { svc:null, day:null, time:null });
+    svcOpts.querySelectorAll('.opt').forEach(x => x.setAttribute('aria-checked', false));
+    daysEl.querySelectorAll('.day').forEach(x => x.setAttribute('aria-checked', false));
+    timesEl.innerHTML = '<p class="sum">Pick a day first.</p>';
+    $('#n1').disabled = $('#n2').disabled = true; $('#sum1').textContent = 'Pick a service'; $('#sum2').textContent = '';
+    $('#det').reset(); go(1);
+  });
+})();
+</script>
+</body>
+</html>
