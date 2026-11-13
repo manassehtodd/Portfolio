@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cryptocut Barbershop · Cuts &amp; Gaming, Port Harcourt</title>
+<meta name="description" content="Cryptocut is a barbershop and PS5 gaming lounge in Peace Valley Estate, off Trans Woji Road, Port Harcourt. Book your cut on WhatsApp.">
+<meta property="og:title" content="Cryptocut Barbershop · Port Harcourt">
+<meta property="og:description" content="Fresh cuts. Game on. Book on WhatsApp.">
+<meta name="theme-color" content="#f3ece0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23f3ece0'/><text x='16' y='23' font-family='Georgia' font-style='italic' font-size='20' fill='%23111' text-anchor='middle'>C</text><circle cx='24' cy='9' r='4' fill='%23f7931a'/></svg>">
+<!--
+  TIER: AFFORDABLE — editorial one-pager (direction from Awwwards barbershop
+  winners: Rendezvous Barbers, Don Barber & Groom). Chair + Lounge menus,
+  visit steps, payments, hours/map, FAQ, booking form that opens WhatsApp
+  with the message pre-filled. ~2KB JS.
+  Prices + hours are SAMPLES; phone is from a public directory — confirm.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#f3ece0; --paper-2:#ebe2d3; --ink:#111110; --mute:#6f675b; --line:#d6ccbb; --btc:#f7931a; --btc-ink:#b4630a;
+    --serif:"Instrument Serif",Georgia,serif; --pad:clamp(16px,4vw,48px); --max:1200px;
+  }
+  * { box-sizing:border-box; margin:0; }
+  html { scroll-behavior:smooth; scroll-padding-top:80px; }
+  body { background:var(--paper); color:var(--ink); font:400 16px/1.6 Inter,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  :focus-visible { outline:2px solid var(--btc); outline-offset:3px; }
+  .wrap { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+  .skip { position:absolute; left:-999px; top:8px; background:var(--ink); color:var(--paper); padding:8px 12px; z-index:99; }
+  .skip:focus { left:8px; }
+  .kicker { font:500 12px/1.2 Inter,sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--mute); }
+  .serif { font-family:var(--serif); font-weight:400; }
+  em { font-style:italic; }
+
+  header { position:sticky; top:0; z-index:20; background:rgba(243,236,224,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .nav { height:68px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .mark { font:italic 400 24px/1 var(--serif); text-decoration:none; display:flex; align-items:center; gap:8px; }
+  .mark i { width:10px; height:10px; border-radius:50%; background:var(--btc); }
+  .links { display:flex; gap:28px; list-style:none; padding:0; }
+  .links a { text-decoration:none; font-size:14px; color:var(--mute); }
+  .links a:hover { color:var(--ink); }
+  .pill { display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:var(--paper); text-decoration:none; font-weight:600; font-size:14px; padding:11px 18px; border-radius:99px; transition:background .2s; border:0; cursor:pointer; font-family:inherit; }
+  .pill:hover { background:#000; }
+  .pill.ghost { background:none; color:var(--ink); border:1px solid var(--ink); }
+  .pill.ghost:hover { background:var(--ink); color:var(--paper); }
+  @media (max-width:860px) { .links { display:none; } }
+
+  /* hero */
+  .hero { padding-block:clamp(48px,8vw,104px) clamp(48px,7vw,88px); display:grid; grid-template-columns:1.35fr 1fr; gap:clamp(32px,5vw,72px); align-items:end; }
+  .hero h1 { font:400 clamp(52px,7.6vw,112px)/.92 var(--serif); letter-spacing:-.025em; }
+  .hero h1 em { color:var(--btc-ink); }
+  .hero p.lead { font-size:clamp(17px,1.5vw,20px); max-width:40ch; margin:28px 0 32px; color:#3b362f; }
+  .ctas { display:flex; gap:10px; flex-wrap:wrap; }
+  .arch { aspect-ratio:4/5; border-radius:999px 999px 18px 18px; background:var(--ink); position:relative; overflow:hidden; }
+  .arch img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .arch::after { content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(17,17,16,.75), transparent 45%); }
+  .arch .cap { z-index:1; }
+  .arch .cap { position:absolute; left:0; right:0; bottom:22px; text-align:center; color:var(--paper); font:italic 400 22px/1 var(--serif); }
+  @media (max-width:860px) { .hero { grid-template-columns:1fr; } .arch { max-width:360px; aspect-ratio:1/1; border-radius:999px 999px 18px 18px; } }
+
+  .ticker { border-block:1px solid var(--ink); overflow:hidden; white-space:nowrap; background:var(--ink); color:var(--paper); }
+  .ticker div { display:inline-flex; gap:40px; padding:14px 0; animation:tick 30s linear infinite; font:italic 400 24px/1 var(--serif); }
+  .ticker b { color:var(--btc); font-weight:400; font-style:normal; }
+  @keyframes tick { to { transform:translateX(-50%); } }
+
+  section { padding:clamp(72px,10vw,128px) 0; border-bottom:1px solid var(--line); }
+  h2 { font:400 clamp(44px,6vw,88px)/.95 var(--serif); letter-spacing:-.02em; }
+  h2 em { color:var(--btc-ink); }
+  .head { display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-bottom:48px; }
+  .head p { max-width:36ch; color:var(--mute); }
+
+  /* gallery */
+  .gallery { display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:clamp(110px,11vw,150px); gap:12px; }
+  .gallery figure { margin:0; position:relative; overflow:hidden; border-radius:18px; background:var(--paper-2); }
+  .gallery img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s cubic-bezier(.16,1,.3,1); }
+  .gallery figure:hover img { transform:scale(1.04); }
+  .gallery figcaption { position:absolute; left:12px; right:12px; bottom:12px; display:flex; justify-content:space-between; gap:8px; background:rgba(243,236,224,.92); backdrop-filter:blur(6px); border-radius:99px; padding:8px 14px; font-size:13px; font-weight:500; }
+  .gallery figcaption span:last-child { color:var(--btc-ink); }
+  .g1 { grid-column:1 / span 5; grid-row:span 4; }
+  .g2 { grid-column:6 / span 7; grid-row:span 2; }
+  .g3 { grid-column:6 / span 3; grid-row:span 2; }
+  .g4 { grid-column:9 / span 4; grid-row:span 2; }
+  .g5 { grid-column:1 / -1; grid-row:span 2; }
+  @media (max-width:860px) {
+    .gallery { grid-template-columns:1fr 1fr; grid-auto-rows:150px; }
+    .g1 { grid-column:1 / -1; grid-row:span 3; } .g2, .g5 { grid-column:1 / -1; grid-row:span 2; } .g3, .g4 { grid-column:span 1; grid-row:span 2; }
+  }
+  @media (prefers-reduced-motion:reduce) { .gallery img { transition:none; } }
+
+  /* menus */
+  .menus { display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); }
+  .card { background:var(--paper-2); border-radius:18px; padding:clamp(24px,3vw,40px); }
+  .card.dark { background:var(--ink); color:var(--paper); }
+  .card.dark .kicker, .card.dark .item small { color:#a59d90; }
+  .card.dark .item { border-color:#2d2b28; }
+  .card h3 { font:400 44px/1 var(--serif); margin:10px 0 18px; }
+  .card h3 em { color:var(--btc); }
+  .item { display:grid; grid-template-columns:1fr auto; gap:2px 16px; padding:16px 0; border-top:1px solid var(--line); }
+  .item b { font-weight:500; font-size:17px; }
+  .item span { font:400 24px/1 var(--serif); font-variant-numeric:tabular-nums; }
+  .item small { grid-column:1/-1; color:var(--mute); font-size:14px; }
+  @media (max-width:860px) { .menus { grid-template-columns:1fr; } }
+
+  /* steps */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+  .step { background:var(--paper); padding:32px 28px 36px; }
+  .step .n { font:italic 400 64px/1 var(--serif); color:var(--btc-ink); }
+  .step h3 { font-size:20px; font-weight:600; margin:18px 0 8px; }
+  .step p { color:var(--mute); }
+  @media (max-width:860px) { .steps { grid-template-columns:1fr; } }
+
+  /* pay */
+  .pays { display:flex; flex-wrap:wrap; gap:10px; }
+  .chip { border:1px solid var(--ink); border-radius:99px; padding:10px 18px; font-weight:500; }
+  .chip.btc { background:var(--btc); border-color:var(--btc); color:var(--ink); }
+
+  /* visit + book */
+  .visit { display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(32px,5vw,72px); }
+  address { font:400 clamp(28px,3vw,40px)/1.1 var(--serif); font-style:normal; margin:16px 0 20px; }
+  .hours { list-style:none; padding:0; margin:28px 0; }
+  .hours li { display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid var(--line); }
+  form { background:var(--ink); color:var(--paper); border-radius:18px; padding:clamp(24px,3vw,40px); display:grid; gap:16px; }
+  form h3 { font:400 40px/1 var(--serif); }
+  form h3 em { color:var(--btc); }
+  label { display:grid; gap:6px; font-size:13px; color:#a59d90; }
+  input, select, textarea { font:inherit; font-size:16px; color:var(--paper); background:#1c1b19; border:1px solid #34312d; padding:13px 14px; border-radius:10px; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--btc); }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  form button { background:var(--btc); color:var(--ink); border:0; padding:16px; border-radius:99px; font:600 16px Inter,sans-serif; cursor:pointer; }
+  form button:hover { background:#ffa53d; }
+  .err { color:#ff9a8a; font-size:14px; min-height:1em; }
+  @media (max-width:860px) { .visit { grid-template-columns:1fr; } .row2 { grid-template-columns:1fr; } }
+
+  details { border-top:1px solid var(--line); }
+  details:last-of-type { border-bottom:1px solid var(--line); }
+  summary { cursor:pointer; list-style:none; padding:22px 0; font:400 26px/1.15 var(--serif); display:flex; justify-content:space-between; gap:16px; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; font-family:Inter,sans-serif; color:var(--btc-ink); }
+  details[open] summary::after { content:"–"; }
+  details p { color:var(--mute); padding-bottom:22px; max-width:60ch; }
+  .faq { display:grid; grid-template-columns:1fr 1.5fr; gap:48px; }
+  @media (max-width:860px) { .faq { grid-template-columns:1fr; } }
+
+  footer { padding:56px 0 32px; }
+  .bigmark { font:italic 400 clamp(64px,15vw,220px)/.9 var(--serif); letter-spacing:-.03em; }
+  .bigmark span { color:var(--btc-ink); }
+  .foot { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:32px; font-size:14px; color:var(--mute); }
+  @media (prefers-reduced-motion:reduce) { .ticker div { animation:none; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a class="mark" href="#top">Cryptocut_Barbers <i aria-hidden="true"></i></a>
+    <ul class="links">
+      <li><a href="#work">Our work</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">How it works</a></li>
+      <li><a href="#find">Find us</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="pill" href="#book">Book a cut</a>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap hero" id="top">
+    <div>
+      <p class="kicker">Barbershop &amp; gaming lounge · Port Harcourt</p>
+      <h1 style="margin-top:20px">The only barbershop where the <em>wait</em> is the best part.</h1>
+      <p class="lead">Fades, low cuts and beard work in Peace Valley Estate, plus a PS5 lounge while you wait. Pay by cash, transfer or crypto.</p>
+      <div class="ctas">
+        <a class="pill" href="#book">Book on WhatsApp →</a>
+        <a class="pill ghost" href="#menu">See prices</a>
+      </div>
+    </div>
+    <div class="arch">
+      <!-- DEMO PHOTO (Unsplash) — replace with Cryptocut's own work -->
+      <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=760&h=950&q=72" width="760" height="950" alt="Barber shaping a client's curly top and taper fade" fetchpriority="high" decoding="async">
+      <span class="cap">Cut. Play. Repeat.</span>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true"><div>
+    <span>Skin fades</span><b>✦</b><span>Low cuts</span><b>✦</b><span>Beard line-ups</span><b>✦</b><span>PS5 lounge</span><b>✦</b><span>EA FC nights</span><b>✦</b><span>Crypto accepted</span><b>✦</b>
+    <span>Skin fades</span><b>✦</b><span>Low cuts</span><b>✦</b><span>Beard line-ups</span><b>✦</b><span>PS5 lounge</span><b>✦</b><span>EA FC nights</span><b>✦</b><span>Crypto accepted</span><b>✦</b>
+  </div></div>
+
+  <!-- DEMO PHOTOS (Unsplash, free licence) — replace with Cryptocut's own work before launch -->
+  <section id="work">
+    <div class="wrap">
+      <div class="head"><h2>Fresh off <em>the chair.</em></h2><p>A few recent cuts. Find the style you want and show it to the barber.</p></div>
+      <div class="gallery">
+        <figure class="g1"><img src="https://images.unsplash.com/photo-1744636547816-dcb483f60f46?auto=format&fit=crop&w=800&h=1000&q=70" width="800" height="1000" alt="Smiling client with a high-top and a hard part design" loading="lazy" decoding="async"><figcaption><span>Hard part design</span><span>From ₦4,000</span></figcaption></figure>
+        <figure class="g2"><img src="https://images.unsplash.com/photo-1686671805337-7d8aa64b965f?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" alt="Barber lining up a client's low cut" loading="lazy" decoding="async"><figcaption><span>Low cut + line-up</span><span>₦4,000</span></figcaption></figure>
+        <figure class="g3"><img src="https://images.unsplash.com/photo-1559925073-ffe31c1afaee?auto=format&fit=crop&w=600&h=750&q=70" width="600" height="750" alt="Black and white profile of a fresh skin fade" loading="lazy" decoding="async"><figcaption><span>Skin fade</span><span>₦4,000</span></figcaption></figure>
+        <figure class="g4"><img src="https://images.unsplash.com/photo-1512864084360-7c0c4d0a0845?auto=format&fit=crop&w=600&h=750&q=70" width="600" height="750" alt="Barber detailing a client's beard line" loading="lazy" decoding="async"><figcaption><span>Beard line-up</span><span>₦2,000</span></figcaption></figure>
+        <figure class="g5"><img src="https://images.unsplash.com/photo-1635273051839-003bf06a8751?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" alt="Close-up of clippers blending a fade" loading="lazy" decoding="async"><figcaption><span>The blend, up close</span><span>Every cut</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="head"><h2>Two rooms, <em>one visit.</em></h2><p>Get a sharp cut in the chair, then a quick match in the lounge. Or book both together.</p></div>
+      <div class="menus">
+        <div class="card">
+          <p class="kicker">01 — The chair</p>
+          <h3>Cuts</h3>
+          <div class="item"><b>Haircut</b><span>₦3,000</span><small>Clipper or scissors, shaped and finished clean.</small></div>
+          <div class="item"><b>Low cut / skin fade</b><span>₦4,000</span><small>Blended to the skin with a crisp line-up.</small></div>
+          <div class="item"><b>Cut + beard</b><span>₦5,000</span><small>Any cut, plus beard shaped, lined and oiled.</small></div>
+          <div class="item"><b>Beard trim &amp; line-up</b><span>₦2,000</span><small>Sharp edges and razor detail.</small></div>
+          <div class="item"><b>Kids (under 12)</b><span>₦2,500</span><small>Patient hands, fast cut.</small></div>
+          <div class="item"><b>Dye / colour</b><span>₦6,000</span><small>Black, blonde or a custom colour.</small></div>
+        </div>
+        <div class="card dark">
+          <p class="kicker">02 — The lounge</p>
+          <h3>Game <em>on</em></h3>
+          <div class="item"><b>PS5, 30 minutes</b><span>₦1,000</span><small>EA FC, Mortal Kombat, NBA 2K and more.</small></div>
+          <div class="item"><b>PS5, 1 hour</b><span>₦1,800</span><small>Bring a friend. Two controllers are included.</small></div>
+          <div class="item"><b>Cut + 1 hour</b><span>₦5,000</span><small>Our combo: a haircut plus an hour in the lounge.</small></div>
+          <div class="item"><b>Friday FC night</b><span>₦2,000</span><small>Weekly EA FC knockout. The winner's next cut is free.</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="head"><h2>How a visit <em>works</em></h2></div>
+      <div class="steps">
+        <div class="step"><span class="n">i.</span><h3>Book on WhatsApp</h3><p>Choose a service and a time below. Your message is written for you, so just hit send.</p></div>
+        <div class="step"><span class="n">ii.</span><h3>Take the chair</h3><p>Arrive on time and get straight in. If you're early, the PS5 is free while you wait.</p></div>
+        <div class="step"><span class="n">iii.</span><h3>Pay your way</h3><p>Pay with cash, a bank transfer or USDT/BTC. All three are equally welcome.</p></div>
+      </div>
+      <div class="pays" style="margin-top:32px" aria-label="Payment methods">
+        <span class="chip">Cash</span><span class="chip">Bank transfer</span><span class="chip">POS</span><span class="chip btc">USDT</span><span class="chip btc">BTC</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="find">
+    <div class="wrap visit">
+      <div id="book-info">
+        <p class="kicker">Find us</p>
+        <address>No. 1 Peace Valley Estate,<br>off Trans Woji Road,<br>Port Harcourt</address>
+        <a class="pill ghost" href="https://www.google.com/maps/search/?api=1&query=Peace+Valley+Estate+Trans+Woji+Road+Port+Harcourt" rel="noopener">Open in Maps →</a>
+        <ul class="hours" aria-label="Opening hours">
+          <li><span>Monday – Saturday</span><span>9:00 – 21:00</span></li>
+          <li><span>Sunday</span><span>13:00 – 20:00</span></li>
+        </ul>
+        <p style="color:var(--mute)">Prefer to call? <a href="tel:+2348168024585">0816 802 4585</a></p>
+      </div>
+      <form id="book" novalidate>
+        <h3>Book a <em>cut</em></h3>
+        <label>Your name<input name="name" autocomplete="name" required></label>
+        <div class="row2">
+          <label>Service
+            <select name="service">
+              <option>Low cut / skin fade</option><option>Haircut</option><option>Cut + beard</option><option>Beard trim &amp; line-up</option><option>Kids cut</option><option>Dye / colour</option><option>Cut + 1 hour PS5</option>
+            </select>
+          </label>
+          <label>Day<select name="day"><option>Today</option><option>Tomorrow</option><option>This weekend</option></select></label>
+        </div>
+        <label>Time<input name="time" placeholder="e.g. 4pm"></label>
+        <label>Note (optional)<textarea name="note" rows="2" placeholder="Style, reference, first visit…"></textarea></label>
+        <p class="err" id="err" aria-live="polite"></p>
+        <button type="submit">Send on WhatsApp →</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq">
+      <h2>Good <em>questions</em></h2>
+      <div>
+        <details><summary>Do I need to book?</summary><p>Walk-ins are welcome, but booked clients go first. Booking takes about 20 seconds on WhatsApp.</p></details>
+        <details><summary>Can I play without a haircut?</summary><p>Yes. The lounge is open to everyone during shop hours, and you pay by the half hour.</p></details>
+        <details><summary>How do crypto payments work?</summary><p>Ask for the wallet address at the counter. Send the Naira price in USDT (TRC-20) or BTC at the day's rate, and show the confirmation before you leave.</p></details>
+        <details><summary>Do you do home service?</summary><p>Yes, by arrangement. Send a WhatsApp message with your location and the time you want.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="bigmark" aria-hidden="true">Cryptocut<span>.</span></div>
+    <div class="foot"><span>© Cryptocut Barbershop · Port Harcourt · Demo photos: Unsplash</span><a href="https://www.facebook.com/Cryptocut/" rel="noopener">Facebook</a></div>
+  </div>
+</footer>
+
+<script>
+  const WA = '2348168024585';
+  document.getElementById('book').addEventListener('submit', e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(e.target));
+    if (!d.name.trim()) { document.getElementById('err').textContent = 'Please add your name.'; e.target.name.focus(); return; }
+    const text = `Hi Cryptocut, I'm ${d.name.trim()}. I'd like to book: ${d.service}, ${d.day.toLowerCase()}${d.time ? ' at ' + d.time.trim() : ''}.${d.note.trim() ? '\n' + d.note.trim() : ''}`;
+    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>
